@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B63B8620-7B36-41A1-803F-2F8BF9C8976E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DeskAssemble</RootNamespace>
+    <AssemblyName>DeskAssemble</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.Desktop.v20.2, Version=20.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v20.2, Version=20.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v20.2.Core, Version=20.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v20.2, Version=20.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v20.2, Version=20.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form\CaptureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\CaptureForm.Designer.cs">
+      <DependentUpon>CaptureForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\ExpenseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\ExpenseForm.Designer.cs">
+      <DependentUpon>ExpenseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\InOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\InOutForm.Designer.cs">
+      <DependentUpon>InOutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\OrderListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\OrderListForm.Designer.cs">
+      <DependentUpon>OrderListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\ProductCatalogueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\ProductCatalogueForm.Designer.cs">
+      <DependentUpon>ProductCatalogueForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\ProfitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\ProfitForm.Designer.cs">
+      <DependentUpon>ProfitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\ProfitRateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\ProfitRateForm.Designer.cs">
+      <DependentUpon>ProfitRateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Form\PurchasedCountryDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\PurchasedCountryDetailForm.Designer.cs">
+      <DependentUpon>PurchasedCountryDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\PurchasedCountryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\PurchasedCountryForm.Designer.cs">
+      <DependentUpon>PurchasedCountryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\PurchasedPartDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\PurchasedPartDetailForm.Designer.cs">
+      <DependentUpon>PurchasedPartDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\PurchasedPartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\PurchasedPartForm.Designer.cs">
+      <DependentUpon>PurchasedPartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\SaledCountryDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\SaledCountryDetailForm.Designer.cs">
+      <DependentUpon>SaledCountryDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\SaledCountryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\SaledCountryForm.Designer.cs">
+      <DependentUpon>SaledCountryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\SaledProductDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\SaledProductDetailForm.Designer.cs">
+      <DependentUpon>SaledProductDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\SaledProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\SaledProductForm.Designer.cs">
+      <DependentUpon>SaledProductForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\WarehouseListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\WarehouseListForm.Designer.cs">
+      <DependentUpon>WarehouseListForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
