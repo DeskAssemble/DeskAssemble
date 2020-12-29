@@ -17,7 +17,7 @@ namespace DeskAssembleData
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Country()
         {
-            this.Contract = new HashSet<Contract>();
+            this.Contracts = new HashSet<Contract>();
         }
     
         public int CountryId { get; set; }
@@ -26,6 +26,6 @@ namespace DeskAssembleData
         public double Longitude { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contract> Contract { get; set; }
+        public virtual ICollection<Contract> Contracts { get; set; }
     }
 }

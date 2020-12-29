@@ -25,14 +25,14 @@ namespace DeskAssembleData
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Capture> Capture { get; set; }
-        public virtual DbSet<Contract> Contract { get; set; }
-        public virtual DbSet<Country> Country { get; set; }
-        public virtual DbSet<Expense> Expense { get; set; }
-        public virtual DbSet<Item> Item { get; set; }
-        public virtual DbSet<Movement> Movement { get; set; }
-        public virtual DbSet<Order> Order { get; set; }
-        public virtual DbSet<Team> Team { get; set; }
-        public virtual DbSet<WareHouse> WareHouse { get; set; }
+        public virtual DbSet<Capture> Captures { get; set; }
+        public virtual DbSet<Contract> Contracts { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Expense> Expenses { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<Movement> Movements { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Team> Teams { get; set; }
+        public virtual DbSet<WareHouse> WareHouses { get; set; }
     }
 }

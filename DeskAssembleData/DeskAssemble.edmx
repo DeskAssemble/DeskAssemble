@@ -250,8 +250,8 @@
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <Property Name="IsVendee" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Country" Relationship="Self.FK_Contract_Country" FromRole="Contract" ToRole="Country" />
-          <NavigationProperty Name="Movement" Relationship="Self.FK_Movement_Contract" FromRole="Contract" ToRole="Movement" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Contract" FromRole="Contract" ToRole="Order" />
+          <NavigationProperty Name="Movements" Relationship="Self.FK_Movement_Contract" FromRole="Contract" ToRole="Movement" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Contract" FromRole="Contract" ToRole="Order" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -261,7 +261,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Latitude" Type="Double" Nullable="false" />
           <Property Name="Longitude" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Contract" Relationship="Self.FK_Contract_Country" FromRole="Country" ToRole="Contract" />
+          <NavigationProperty Name="Contracts" Relationship="Self.FK_Contract_Country" FromRole="Country" ToRole="Contract" />
         </EntityType>
         <EntityType Name="Expense">
           <Key>
@@ -284,8 +284,8 @@
           <Property Name="ContainerId" Type="Int32" />
           <NavigationProperty Name="Item1" Relationship="Self.FK_Item_Item" FromRole="Item" ToRole="Item1" />
           <NavigationProperty Name="Item2" Relationship="Self.FK_Item_Item" FromRole="Item1" ToRole="Item" />
-          <NavigationProperty Name="Movement" Relationship="Self.FK_Movement_Item" FromRole="Item" ToRole="Movement" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Item" FromRole="Item" ToRole="Order" />
+          <NavigationProperty Name="Movements" Relationship="Self.FK_Movement_Item" FromRole="Item" ToRole="Movement" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Item" FromRole="Item" ToRole="Order" />
         </EntityType>
         <EntityType Name="Movement">
           <Key>
@@ -324,7 +324,7 @@
           <Property Name="TeamId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Target" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Team" FromRole="Team" ToRole="Order" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Team" FromRole="Team" ToRole="Order" />
         </EntityType>
         <EntityType Name="WareHouse">
           <Key>
@@ -333,7 +333,7 @@
           <Property Name="WarehouseId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Areasize" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Movement" Relationship="Self.FK_Movement_WareHouse" FromRole="WareHouse" ToRole="Movement" />
+          <NavigationProperty Name="Movements" Relationship="Self.FK_Movement_WareHouse" FromRole="WareHouse" ToRole="Movement" />
         </EntityType>
         <Association Name="FK_Contract_Country">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
@@ -432,46 +432,46 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DeskAssemblyEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Capture" EntityType="Self.Capture" />
-          <EntitySet Name="Contract" EntityType="Self.Contract" />
-          <EntitySet Name="Country" EntityType="Self.Country" />
-          <EntitySet Name="Expense" EntityType="Self.Expense" />
-          <EntitySet Name="Item" EntityType="Self.Item" />
-          <EntitySet Name="Movement" EntityType="Self.Movement" />
-          <EntitySet Name="Order" EntityType="Self.Order" />
-          <EntitySet Name="Team" EntityType="Self.Team" />
-          <EntitySet Name="WareHouse" EntityType="Self.WareHouse" />
+          <EntitySet Name="Captures" EntityType="Self.Capture" />
+          <EntitySet Name="Contracts" EntityType="Self.Contract" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Expenses" EntityType="Self.Expense" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="Movements" EntityType="Self.Movement" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Teams" EntityType="Self.Team" />
+          <EntitySet Name="WareHouses" EntityType="Self.WareHouse" />
           <AssociationSet Name="FK_Contract_Country" Association="Self.FK_Contract_Country">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="Contract" EntitySet="Contract" />
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Contract" EntitySet="Contracts" />
           </AssociationSet>
           <AssociationSet Name="FK_Movement_Contract" Association="Self.FK_Movement_Contract">
-            <End Role="Contract" EntitySet="Contract" />
-            <End Role="Movement" EntitySet="Movement" />
+            <End Role="Contract" EntitySet="Contracts" />
+            <End Role="Movement" EntitySet="Movements" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Contract" Association="Self.FK_Order_Contract">
-            <End Role="Contract" EntitySet="Contract" />
-            <End Role="Order" EntitySet="Order" />
+            <End Role="Contract" EntitySet="Contracts" />
+            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Item_Item" Association="Self.FK_Item_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="Item1" EntitySet="Item" />
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Item1" EntitySet="Items" />
           </AssociationSet>
           <AssociationSet Name="FK_Movement_Item" Association="Self.FK_Movement_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="Movement" EntitySet="Movement" />
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Movement" EntitySet="Movements" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Item" Association="Self.FK_Order_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="Order" EntitySet="Order" />
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Movement_WareHouse" Association="Self.FK_Movement_WareHouse">
-            <End Role="WareHouse" EntitySet="WareHouse" />
-            <End Role="Movement" EntitySet="Movement" />
+            <End Role="WareHouse" EntitySet="WareHouses" />
+            <End Role="Movement" EntitySet="Movements" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Team" Association="Self.FK_Order_Team">
-            <End Role="Team" EntitySet="Team" />
-            <End Role="Order" EntitySet="Order" />
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -480,7 +480,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DeskAssemblyModelStoreContainer" CdmEntityContainer="DeskAssemblyEntities">
-          <EntitySetMapping Name="Capture">
+          <EntitySetMapping Name="Captures">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Capture">
               <MappingFragment StoreEntitySet="Capture">
                 <ScalarProperty Name="Datetime" ColumnName="Datetime" />
@@ -488,7 +488,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Contract">
+          <EntitySetMapping Name="Contracts">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Contract">
               <MappingFragment StoreEntitySet="Contract">
                 <ScalarProperty Name="ContractId" ColumnName="ContractId" />
@@ -498,7 +498,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Country">
+          <EntitySetMapping Name="Countries">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Country">
               <MappingFragment StoreEntitySet="Country">
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
@@ -508,7 +508,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Expense">
+          <EntitySetMapping Name="Expenses">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Expense">
               <MappingFragment StoreEntitySet="Expense">
                 <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
@@ -518,7 +518,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Item">
+          <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Item">
               <MappingFragment StoreEntitySet="Item">
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
@@ -530,7 +530,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Movement">
+          <EntitySetMapping Name="Movements">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Movement">
               <MappingFragment StoreEntitySet="Movement">
                 <ScalarProperty Name="MovementId" ColumnName="MovementId" />
@@ -543,7 +543,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Order">
+          <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Order">
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
@@ -556,7 +556,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Team">
+          <EntitySetMapping Name="Teams">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Team">
               <MappingFragment StoreEntitySet="Team">
                 <ScalarProperty Name="TeamId" ColumnName="TeamId" />
@@ -565,7 +565,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="WareHouse">
+          <EntitySetMapping Name="WareHouses">
             <EntityTypeMapping TypeName="DeskAssemblyModel.WareHouse">
               <MappingFragment StoreEntitySet="WareHouse">
                 <ScalarProperty Name="WarehouseId" ColumnName="WarehouseId" />
@@ -588,7 +588,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="없음" />

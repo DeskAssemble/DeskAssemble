@@ -17,7 +17,7 @@ namespace DeskAssembleData
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public WareHouse()
         {
-            this.Movement = new HashSet<Movement>();
+            this.Movements = new HashSet<Movement>();
         }
     
         public int WarehouseId { get; set; }
@@ -25,6 +25,6 @@ namespace DeskAssembleData
         public int Areasize { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Movement> Movement { get; set; }
+        public virtual ICollection<Movement> Movements { get; set; }
     }
 }

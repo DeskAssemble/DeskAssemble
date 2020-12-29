@@ -18,8 +18,8 @@ namespace DeskAssembleData
         public Item()
         {
             this.Item1 = new HashSet<Item>();
-            this.Movement = new HashSet<Movement>();
-            this.Order = new HashSet<Order>();
+            this.Movements = new HashSet<Movement>();
+            this.Orders = new HashSet<Order>();
         }
     
         public int ItemId { get; set; }
@@ -33,8 +33,8 @@ namespace DeskAssembleData
         public virtual ICollection<Item> Item1 { get; set; }
         public virtual Item Item2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Movement> Movement { get; set; }
+        public virtual ICollection<Movement> Movements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
