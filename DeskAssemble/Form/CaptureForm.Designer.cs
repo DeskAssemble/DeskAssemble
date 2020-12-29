@@ -29,9 +29,17 @@ namespace DeskAssemble
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // CaptureForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Capture";
+            this.ClientSize = new System.Drawing.Size(298, 299);
+            this.Name = "CaptureForm";
+            this.Text = "모니터링";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

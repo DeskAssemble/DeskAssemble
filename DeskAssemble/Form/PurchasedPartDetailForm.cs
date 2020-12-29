@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DeskAssemble
 {
-    public partial class PurchasedPartDetailForm : DevExpress.XtraEditors.XtraForm
+    public partial class PurchasedPartDetailForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public PurchasedPartDetailForm()
         {

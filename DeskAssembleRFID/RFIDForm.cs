@@ -9,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DeskAssemble
+namespace DeskAssembleRFID
 {
-    public partial class OrderListForm : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class RFIDForm : DevExpress.XtraEditors.XtraForm
     {
-        public OrderListForm()
+        public RFIDForm()
         {
             InitializeComponent();
         }

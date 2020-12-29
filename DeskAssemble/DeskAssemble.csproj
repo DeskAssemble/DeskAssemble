@@ -100,6 +100,12 @@
     <Compile Include="Form\ProfitRateForm.Designer.cs">
       <DependentUpon>ProfitRateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\SalePerformanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\SalePerformanceForm.Designer.cs">
+      <DependentUpon>SalePerformanceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Form\PurchasedCountryDetailForm.cs">
@@ -156,8 +162,59 @@
     <Compile Include="Form\WarehouseListForm.Designer.cs">
       <DependentUpon>WarehouseListForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\CaptureForm.resx">
+      <DependentUpon>CaptureForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\ExpenseForm.resx">
+      <DependentUpon>ExpenseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\InOutForm.resx">
+      <DependentUpon>InOutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\OrderListForm.resx">
+      <DependentUpon>OrderListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\ProductCatalogueForm.resx">
+      <DependentUpon>ProductCatalogueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\ProfitForm.resx">
+      <DependentUpon>ProfitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\ProfitRateForm.resx">
+      <DependentUpon>ProfitRateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\PurchasedCountryDetailForm.resx">
+      <DependentUpon>PurchasedCountryDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\PurchasedCountryForm.resx">
+      <DependentUpon>PurchasedCountryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\PurchasedPartDetailForm.resx">
+      <DependentUpon>PurchasedPartDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\PurchasedPartForm.resx">
+      <DependentUpon>PurchasedPartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\SaledCountryDetailForm.resx">
+      <DependentUpon>SaledCountryDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\SaledCountryForm.resx">
+      <DependentUpon>SaledCountryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\SaledProductDetailForm.resx">
+      <DependentUpon>SaledProductDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\SaledProductForm.resx">
+      <DependentUpon>SaledProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\SalePerformanceForm.resx">
+      <DependentUpon>SalePerformanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\WarehouseListForm.resx">
+      <DependentUpon>WarehouseListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

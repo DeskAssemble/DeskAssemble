@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DeskAssemble
 {
-    public partial class CaptureForm : DevExpress.XtraEditors.XtraForm
+    public partial class CaptureForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public CaptureForm()
         {

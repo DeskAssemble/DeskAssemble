@@ -1,7 +1,7 @@
 ﻿
-namespace DeskAssemble
+namespace DeskAssemble.Form
 {
-    partial class InOutForm
+    partial class SalePerformanceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,13 +31,13 @@ namespace DeskAssemble
         {
             this.SuspendLayout();
             // 
-            // InOutForm
+            // SalePerformanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(298, 299);
-            this.Name = "InOutForm";
-            this.Text = "입출고 리스트";
+            this.Name = "SalePerformanceForm";
+            this.Text = "영업팀 실적비교";
             this.ResumeLayout(false);
 
         }

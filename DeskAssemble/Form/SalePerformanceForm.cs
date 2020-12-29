@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DeskAssembleRFID
+namespace DeskAssemble.Form
 {
-    public partial class Form1 : Form
+    public partial class SalePerformanceForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public Form1()
+        public SalePerformanceForm()
         {
             InitializeComponent();
         }

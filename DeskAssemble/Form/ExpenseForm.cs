@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DeskAssemble
 {
-    public partial class ExpenseForm : DevExpress.XtraEditors.XtraForm
+    public partial class ExpenseForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public ExpenseForm()
         {

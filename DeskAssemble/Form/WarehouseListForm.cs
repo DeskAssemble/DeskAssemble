@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DeskAssemble
 {
-    public partial class WarehouseListForm : DevExpress.XtraEditors.XtraForm
+    public partial class WarehouseListForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public WarehouseListForm()
         {

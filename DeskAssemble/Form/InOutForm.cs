@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DeskAssemble
 {
-    public partial class InOutForm : DevExpress.XtraEditors.XtraForm
+    public partial class InOutForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public InOutForm()
         {

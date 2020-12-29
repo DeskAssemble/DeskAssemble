@@ -29,9 +29,17 @@ namespace DeskAssemble
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // ProfitForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "ProfitForm";
+            this.ClientSize = new System.Drawing.Size(298, 299);
+            this.Name = "ProfitForm";
+            this.Text = "분기별 매출";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
