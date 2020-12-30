@@ -53,11 +53,10 @@ namespace DeskAssemble
         {
             using (DeskAssemblyEntities db = new DeskAssemblyEntities())
             {
-                if (textBox1.Text == "" && textBox2.Text == "" && textBox5.Text == "")
+                if (textBox1.Text == "" && textBox2.Text == "")
                     return;
 
                 Item item = new Item();
-                item.ItemId = int.Parse(textBox5.Text);
                 item.Name = textBox1.Text;
                 item.Price = int.Parse(textBox2.Text);
 
@@ -82,7 +81,6 @@ namespace DeskAssemble
             textBox1.Text = "";
             textBox2.Text = "";
             textBox4.Text = "";
-            textBox5.Text = "";
             pictureBox1.Image = null;
         }
 
@@ -186,7 +184,6 @@ namespace DeskAssemble
             using(DeskAssemblyEntities db = new DeskAssemblyEntities())
             {
                 Item item = db.Items.Find(ID);
-                textBox5.Text = Convert.ToString(item.ItemId);
                 textBox1.Text = item.Name;
                 textBox2.Text = item.Price.ToString();
 
@@ -205,7 +202,7 @@ namespace DeskAssemble
             textBox1.Text = "";
             textBox2.Text = "";
             textBox4.Text = "";
-            textBox5.Text = "";
+          
             pictureBox1.Image = null;
         }
     }

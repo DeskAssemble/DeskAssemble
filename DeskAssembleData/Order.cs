@@ -25,7 +25,5 @@ namespace DeskAssembleData
         public virtual Contract Contract { get; set; }
         public virtual Item Item { get; set; }
         public virtual Team Team { get; set; }
-
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }

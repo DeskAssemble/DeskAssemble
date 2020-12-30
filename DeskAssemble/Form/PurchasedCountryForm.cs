@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraMap;
+using DeskAssembleData.Dao;
 
 namespace DeskAssemble
 {
@@ -17,6 +18,13 @@ namespace DeskAssemble
         public PurchasedCountryForm()
         {
             InitializeComponent();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            mapChartModelBindingSource.DataSource = Dao.Order.GetPurchasedCountryModels();
         }
     }
 }
