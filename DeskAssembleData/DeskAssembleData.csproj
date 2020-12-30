@@ -96,6 +96,8 @@
     <Compile Include="Item.cs">
       <DependentUpon>DeskAssemble.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Purchasemodel.cs" />
+    <Compile Include="Model\Salemodel.cs" />
     <Compile Include="Movement.cs">
       <DependentUpon>DeskAssemble.tt</DependentUpon>
     </Compile>
@@ -112,7 +114,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
-    <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
