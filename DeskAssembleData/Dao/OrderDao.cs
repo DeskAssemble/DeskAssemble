@@ -51,38 +51,71 @@ namespace DeskAssembleData
             }
         }
 
-        public List<Purchasemodel2> GetModels()
+        public List<Purchasemodel2> GetPurchasemodelModels()
         {
             {
                 using (var context = DbContextCreator.Create())
                 {
                     var PartNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
+                    var items = context.Items.ToList();
 
-                    var query = from i in context.Items
-                                join o in context.Orders on i.ItemId equals o.ItemId
-                                where o.IsSale == false && i.IsProduct == false
-                                select new { Quantities = o.Orders.Sum(s => s.Quantity), ItemId = o.ItemId };
-
-                    var query2 = from x in query
-                                 group x by x.ItemId into g
-                                 select g;
-
-                    var Purchasemodels = new List<Purchasemodel2>();
-                    foreach (var group in query2)
+                    List<Purchasemodel2> pmodels = new List<Purchasemodel2>();
+                    foreach (Item item in items)
                     {
-                        Purchasemodel2 model = new Purchasemodel2();
-                        model.ItemId = group.Key;
-                        model.Quantity = group.Sum(g => g.Quantities);
-                        model.PartName = PartNames[group.Key];
+                        var query = from o in context.Orders
+                                    where o.ItemId == item.ItemId && o.IsSale == false
+                                    select o.Quantity;
 
-                        Purchasemodels.Add(model);
+                        var list = query.ToList();
+                        Purchasemodel2 pmodel = new Purchasemodel2();
+                        pmodel.Quantity = list.Sum();
+                        pmodel.ItemId = item.ItemId;
+                        pmodel.PartName = item.Name;
+
+                        pmodels.Add(pmodel);
                     }
 
-                    return Purchasemodels;
+                    return pmodels;
                 }
             }
+        }
+
+        public List<Salemodel2> GetSaleModels()
+            {
+                {
+                    using (var context = DbContextCreator.Create())
+                    {
+                        var ProductNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
+
+                        var query = from i in context.Items
+                                    join o in context.Orders on i.ItemId equals o.ItemId
+                                    where o.IsSale == true && i.IsProduct == true
+                                    select new { Quantities = i.Orders.Sum(s => s.Quantity), ItemId = o.ItemId };
+
+                        var query2 = from x in query
+                                     group x by x.ItemId into g
+                                     select g;
+
+                        var Salemodels = new List<Salemodel2>();
+                        foreach (var group in query2)
+                        {
+                            Salemodel2 smodel = new Salemodel2();
+                            smodel.ItemId = group.Key;
+                            smodel.Quantity = group.Sum(g => g.Quantities);
+                            smodel.ProductName = ProductNames[group.Key];
+
+                            Salemodels.Add(smodel);
+                        }
+
+                        return Salemodels;
+                    }
+                }
+
 
         }
+
+
     }
 
+    
 }

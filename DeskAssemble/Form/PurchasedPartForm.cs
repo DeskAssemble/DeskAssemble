@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using DeskAssembleData.Dao;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,14 @@ namespace DeskAssemble
         public PurchasedPartForm()
         {
             InitializeComponent();
+ 
+        }
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+
+            purchasemodel2BindingSource.DataSource = Dao.Order.GetPurchasemodelModels();
         }
     }
 }
