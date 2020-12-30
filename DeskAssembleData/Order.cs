@@ -18,7 +18,7 @@ namespace DeskAssembleData
         public int ItemId { get; set; }
         public System.DateTime Date { get; set; }
         public int TeamId { get; set; }
-        public string Quantity { get; set; }
+        public int Quantity { get; set; }
         public bool IsSale { get; set; }
         public int ContractId { get; set; }
     
