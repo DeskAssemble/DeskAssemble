@@ -5,23 +5,23 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="661f66265fe24af69bf2b1efbb41e45d" Name="Diagram1">
-        <EntityTypeShape EntityType="DeskAssemblyModel.Capture" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DeskAssemblyModel.Contract" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DeskAssemblyModel.Country" Width="1.5" PointX="1.5" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DeskAssemblyModel.Expense" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DeskAssemblyModel.Item" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DeskAssemblyModel.Movement" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DeskAssemblyModel.Order" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DeskAssemblyModel.Team" Width="1.75" PointX="3.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DeskAssemblyModel.WareHouse" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
-        <AssociationConnector Association="DeskAssemblyModel.FK_Contract_Country" ManuallyRouted="false" />
-        <AssociationConnector Association="DeskAssemblyModel.FK_Movement_Contract" ManuallyRouted="false" />
-        <AssociationConnector Association="DeskAssemblyModel.FK_Order_Contract" ManuallyRouted="false" />
-        <AssociationConnector Association="DeskAssemblyModel.FK_Item_Item" ManuallyRouted="false" />
-        <AssociationConnector Association="DeskAssemblyModel.FK_Movement_Item" ManuallyRouted="false" />
-        <AssociationConnector Association="DeskAssemblyModel.FK_Order_Item" ManuallyRouted="false" />
-        <AssociationConnector Association="DeskAssemblyModel.FK_Movement_WareHouse" ManuallyRouted="false" />
-        <AssociationConnector Association="DeskAssemblyModel.FK_Order_Team" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DeskAssemblyModel.Capture" Width="1.5" PointX="5.75" PointY="1.875" />
+        <EntityTypeShape EntityType="DeskAssemblyModel.Contract" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DeskAssemblyModel.Country" Width="1.5" PointX="1.5" PointY="11.875" />
+        <EntityTypeShape EntityType="DeskAssemblyModel.Expense" Width="1.5" PointX="2.75" PointY="7.875" />
+        <EntityTypeShape EntityType="DeskAssemblyModel.Item" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="DeskAssemblyModel.Movement" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="DeskAssemblyModel.Order" Width="1.5" PointX="6" PointY="4.125" />
+        <EntityTypeShape EntityType="DeskAssemblyModel.Team" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DeskAssemblyModel.WareHouse" Width="1.5" PointX="0.75" PointY="1.25" />
+        <AssociationConnector Association="DeskAssemblyModel.FK_Contract_Country" />
+        <AssociationConnector Association="DeskAssemblyModel.FK_Movement_Contract" />
+        <AssociationConnector Association="DeskAssemblyModel.FK_Order_Contract" />
+        <AssociationConnector Association="DeskAssemblyModel.FK_Item_Item" />
+        <AssociationConnector Association="DeskAssemblyModel.FK_Movement_Item" />
+        <AssociationConnector Association="DeskAssemblyModel.FK_Order_Item" />
+        <AssociationConnector Association="DeskAssemblyModel.FK_Movement_WareHouse" />
+        <AssociationConnector Association="DeskAssemblyModel.FK_Order_Team" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DeskAssemblyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DeskAssemblyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Capture">
           <Key>
             <PropertyRef Name="Datetime" />
@@ -47,14 +47,14 @@
           <Property Name="IsProduct" Type="bit" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
-          <Property Name="Image" Type="image" Nullable="false" />
+          <Property Name="Image" Type="image" />
           <Property Name="ContainerId" Type="int" />
         </EntityType>
         <EntityType Name="Movement">
           <Key>
             <PropertyRef Name="MovementId" />
           </Key>
-          <Property Name="MovementId" Type="int" Nullable="false" />
+          <Property Name="MovementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ItemId" Type="int" Nullable="false" />
           <Property Name="ContractId" Type="int" Nullable="false" />
           <Property Name="Datetime" Type="datetime" Nullable="false" />
@@ -70,7 +70,7 @@
           <Property Name="ItemId" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="TeamId" Type="int" Nullable="false" />
-          <Property Name="Quantity" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="IsSale" Type="bit" Nullable="false" />
           <Property Name="ContractId" Type="int" Nullable="false" />
         </EntityType>
@@ -229,46 +229,88 @@
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DeskAssemblyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DeskAssemblyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Captures" EntityType="DeskAssemblyModel.Capture" />
+          <EntitySet Name="Contracts" EntityType="DeskAssemblyModel.Contract" />
+          <EntitySet Name="Countries" EntityType="DeskAssemblyModel.Country" />
+          <EntitySet Name="Expenses" EntityType="DeskAssemblyModel.Expense" />
+          <EntitySet Name="Items" EntityType="DeskAssemblyModel.Item" />
+          <EntitySet Name="Movements" EntityType="DeskAssemblyModel.Movement" />
+          <EntitySet Name="Orders" EntityType="DeskAssemblyModel.Order" />
+          <EntitySet Name="Teams" EntityType="DeskAssemblyModel.Team" />
+          <EntitySet Name="WareHouses" EntityType="DeskAssemblyModel.WareHouse" />
+          <AssociationSet Name="FK_Contract_Country" Association="DeskAssemblyModel.FK_Contract_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movement_Contract" Association="DeskAssemblyModel.FK_Movement_Contract">
+            <End Role="Contract" EntitySet="Contracts" />
+            <End Role="Movement" EntitySet="Movements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Contract" Association="DeskAssemblyModel.FK_Order_Contract">
+            <End Role="Contract" EntitySet="Contracts" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Item" Association="DeskAssemblyModel.FK_Item_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Item1" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movement_Item" Association="DeskAssemblyModel.FK_Movement_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Movement" EntitySet="Movements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Item" Association="DeskAssemblyModel.FK_Order_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movement_WareHouse" Association="DeskAssemblyModel.FK_Movement_WareHouse">
+            <End Role="WareHouse" EntitySet="WareHouses" />
+            <End Role="Movement" EntitySet="Movements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Team" Association="DeskAssemblyModel.FK_Order_Team">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Capture">
           <Key>
             <PropertyRef Name="Datetime" />
           </Key>
           <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Monitoring" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Monitoring" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Contract">
           <Key>
             <PropertyRef Name="ContractId" />
           </Key>
           <Property Name="ContractId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <Property Name="IsVendee" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Country" Relationship="Self.FK_Contract_Country" FromRole="Contract" ToRole="Country" />
-          <NavigationProperty Name="Movements" Relationship="Self.FK_Movement_Contract" FromRole="Contract" ToRole="Movement" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Contract" FromRole="Contract" ToRole="Order" />
+          <NavigationProperty Name="Country" Relationship="DeskAssemblyModel.FK_Contract_Country" FromRole="Contract" ToRole="Country" />
+          <NavigationProperty Name="Movements" Relationship="DeskAssemblyModel.FK_Movement_Contract" FromRole="Contract" ToRole="Movement" />
+          <NavigationProperty Name="Orders" Relationship="DeskAssemblyModel.FK_Order_Contract" FromRole="Contract" ToRole="Order" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="CountryId" />
           </Key>
           <Property Name="CountryId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Latitude" Type="Double" Nullable="false" />
           <Property Name="Longitude" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Contracts" Relationship="Self.FK_Contract_Country" FromRole="Country" ToRole="Contract" />
+          <NavigationProperty Name="Contracts" Relationship="DeskAssemblyModel.FK_Contract_Country" FromRole="Country" ToRole="Contract" />
         </EntityType>
         <EntityType Name="Expense">
           <Key>
             <PropertyRef Name="ExpenseId" />
           </Key>
           <Property Name="ExpenseId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Cost" Type="Int32" Nullable="false" />
         </EntityType>
@@ -278,29 +320,29 @@
           </Key>
           <Property Name="ItemId" Type="Int32" Nullable="false" />
           <Property Name="IsProduct" Type="Boolean" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Int32" Nullable="false" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ContainerId" Type="Int32" />
-          <NavigationProperty Name="Item1" Relationship="Self.FK_Item_Item" FromRole="Item" ToRole="Item1" />
-          <NavigationProperty Name="Item2" Relationship="Self.FK_Item_Item" FromRole="Item1" ToRole="Item" />
-          <NavigationProperty Name="Movements" Relationship="Self.FK_Movement_Item" FromRole="Item" ToRole="Movement" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Item" FromRole="Item" ToRole="Order" />
+          <NavigationProperty Name="Item1" Relationship="DeskAssemblyModel.FK_Item_Item" FromRole="Item" ToRole="Item1" />
+          <NavigationProperty Name="Item2" Relationship="DeskAssemblyModel.FK_Item_Item" FromRole="Item1" ToRole="Item" />
+          <NavigationProperty Name="Movements" Relationship="DeskAssemblyModel.FK_Movement_Item" FromRole="Item" ToRole="Movement" />
+          <NavigationProperty Name="Orders" Relationship="DeskAssemblyModel.FK_Order_Item" FromRole="Item" ToRole="Order" />
         </EntityType>
         <EntityType Name="Movement">
           <Key>
             <PropertyRef Name="MovementId" />
           </Key>
-          <Property Name="MovementId" Type="Int32" Nullable="false" />
+          <Property Name="MovementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ItemId" Type="Int32" Nullable="false" />
           <Property Name="ContractId" Type="Int32" Nullable="false" />
           <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsIn" Type="Boolean" Nullable="false" />
           <Property Name="WareHouseId" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Contract" Relationship="Self.FK_Movement_Contract" FromRole="Movement" ToRole="Contract" />
-          <NavigationProperty Name="Item" Relationship="Self.FK_Movement_Item" FromRole="Movement" ToRole="Item" />
-          <NavigationProperty Name="WareHouse" Relationship="Self.FK_Movement_WareHouse" FromRole="Movement" ToRole="WareHouse" />
+          <NavigationProperty Name="Contract" Relationship="DeskAssemblyModel.FK_Movement_Contract" FromRole="Movement" ToRole="Contract" />
+          <NavigationProperty Name="Item" Relationship="DeskAssemblyModel.FK_Movement_Item" FromRole="Movement" ToRole="Item" />
+          <NavigationProperty Name="WareHouse" Relationship="DeskAssemblyModel.FK_Movement_WareHouse" FromRole="Movement" ToRole="WareHouse" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -310,34 +352,34 @@
           <Property Name="ItemId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TeamId" Type="Int32" Nullable="false" />
-          <Property Name="Quantity" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="IsSale" Type="Boolean" Nullable="false" />
           <Property Name="ContractId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Contract" Relationship="Self.FK_Order_Contract" FromRole="Order" ToRole="Contract" />
-          <NavigationProperty Name="Item" Relationship="Self.FK_Order_Item" FromRole="Order" ToRole="Item" />
-          <NavigationProperty Name="Team" Relationship="Self.FK_Order_Team" FromRole="Order" ToRole="Team" />
+          <NavigationProperty Name="Contract" Relationship="DeskAssemblyModel.FK_Order_Contract" FromRole="Order" ToRole="Contract" />
+          <NavigationProperty Name="Item" Relationship="DeskAssemblyModel.FK_Order_Item" FromRole="Order" ToRole="Item" />
+          <NavigationProperty Name="Team" Relationship="DeskAssemblyModel.FK_Order_Team" FromRole="Order" ToRole="Team" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
             <PropertyRef Name="TeamId" />
           </Key>
           <Property Name="TeamId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Target" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Team" FromRole="Team" ToRole="Order" />
+          <NavigationProperty Name="Orders" Relationship="DeskAssemblyModel.FK_Order_Team" FromRole="Team" ToRole="Order" />
         </EntityType>
         <EntityType Name="WareHouse">
           <Key>
             <PropertyRef Name="WarehouseId" />
           </Key>
           <Property Name="WarehouseId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Areasize" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Movements" Relationship="Self.FK_Movement_WareHouse" FromRole="WareHouse" ToRole="Movement" />
+          <NavigationProperty Name="Movements" Relationship="DeskAssemblyModel.FK_Movement_WareHouse" FromRole="WareHouse" ToRole="Movement" />
         </EntityType>
         <Association Name="FK_Contract_Country">
-          <End Role="Country" Type="Self.Country" Multiplicity="1" />
-          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <End Type="DeskAssemblyModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="DeskAssemblyModel.Contract" Role="Contract" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="CountryId" />
@@ -348,8 +390,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Movement_Contract">
-          <End Role="Contract" Type="Self.Contract" Multiplicity="1" />
-          <End Role="Movement" Type="Self.Movement" Multiplicity="*" />
+          <End Type="DeskAssemblyModel.Contract" Role="Contract" Multiplicity="1" />
+          <End Type="DeskAssemblyModel.Movement" Role="Movement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Contract">
               <PropertyRef Name="ContractId" />
@@ -360,8 +402,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Contract">
-          <End Role="Contract" Type="Self.Contract" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <End Type="DeskAssemblyModel.Contract" Role="Contract" Multiplicity="1" />
+          <End Type="DeskAssemblyModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Contract">
               <PropertyRef Name="ContractId" />
@@ -372,8 +414,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Item_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-          <End Role="Item1" Type="Self.Item" Multiplicity="*" />
+          <End Type="DeskAssemblyModel.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="DeskAssemblyModel.Item" Role="Item1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Item">
               <PropertyRef Name="ItemId" />
@@ -384,8 +426,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Movement_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="1" />
-          <End Role="Movement" Type="Self.Movement" Multiplicity="*" />
+          <End Type="DeskAssemblyModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="DeskAssemblyModel.Movement" Role="Movement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Item">
               <PropertyRef Name="ItemId" />
@@ -396,8 +438,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <End Type="DeskAssemblyModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="DeskAssemblyModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Item">
               <PropertyRef Name="ItemId" />
@@ -408,8 +450,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Movement_WareHouse">
-          <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="1" />
-          <End Role="Movement" Type="Self.Movement" Multiplicity="*" />
+          <End Type="DeskAssemblyModel.WareHouse" Role="WareHouse" Multiplicity="1" />
+          <End Type="DeskAssemblyModel.Movement" Role="Movement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WareHouse">
               <PropertyRef Name="WarehouseId" />
@@ -420,8 +462,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Team">
-          <End Role="Team" Type="Self.Team" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <End Type="DeskAssemblyModel.Team" Role="Team" Multiplicity="1" />
+          <End Type="DeskAssemblyModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Team">
               <PropertyRef Name="TeamId" />
@@ -431,50 +473,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DeskAssemblyEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Captures" EntityType="Self.Capture" />
-          <EntitySet Name="Contracts" EntityType="Self.Contract" />
-          <EntitySet Name="Countries" EntityType="Self.Country" />
-          <EntitySet Name="Expenses" EntityType="Self.Expense" />
-          <EntitySet Name="Items" EntityType="Self.Item" />
-          <EntitySet Name="Movements" EntityType="Self.Movement" />
-          <EntitySet Name="Orders" EntityType="Self.Order" />
-          <EntitySet Name="Teams" EntityType="Self.Team" />
-          <EntitySet Name="WareHouses" EntityType="Self.WareHouse" />
-          <AssociationSet Name="FK_Contract_Country" Association="Self.FK_Contract_Country">
-            <End Role="Country" EntitySet="Countries" />
-            <End Role="Contract" EntitySet="Contracts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Movement_Contract" Association="Self.FK_Movement_Contract">
-            <End Role="Contract" EntitySet="Contracts" />
-            <End Role="Movement" EntitySet="Movements" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Contract" Association="Self.FK_Order_Contract">
-            <End Role="Contract" EntitySet="Contracts" />
-            <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Item_Item" Association="Self.FK_Item_Item">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="Item1" EntitySet="Items" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Movement_Item" Association="Self.FK_Movement_Item">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="Movement" EntitySet="Movements" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Item" Association="Self.FK_Order_Item">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Movement_WareHouse" Association="Self.FK_Movement_WareHouse">
-            <End Role="WareHouse" EntitySet="WareHouses" />
-            <End Role="Movement" EntitySet="Movements" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Team" Association="Self.FK_Order_Team">
-            <End Role="Team" EntitySet="Teams" />
-            <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -483,94 +482,94 @@
           <EntitySetMapping Name="Captures">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Capture">
               <MappingFragment StoreEntitySet="Capture">
-                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
                 <ScalarProperty Name="Monitoring" ColumnName="Monitoring" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Contracts">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Contract">
               <MappingFragment StoreEntitySet="Contract">
-                <ScalarProperty Name="ContractId" ColumnName="ContractId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
                 <ScalarProperty Name="IsVendee" ColumnName="IsVendee" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContractId" ColumnName="ContractId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Countries">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Country">
               <MappingFragment StoreEntitySet="Country">
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
                 <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Expenses">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Expense">
               <MappingFragment StoreEntitySet="Expense">
-                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Item">
               <MappingFragment StoreEntitySet="Item">
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-                <ScalarProperty Name="IsProduct" ColumnName="IsProduct" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="ContainerId" ColumnName="ContainerId" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsProduct" ColumnName="IsProduct" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Movements">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Movement">
               <MappingFragment StoreEntitySet="Movement">
-                <ScalarProperty Name="MovementId" ColumnName="MovementId" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-                <ScalarProperty Name="ContractId" ColumnName="ContractId" />
-                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
-                <ScalarProperty Name="IsIn" ColumnName="IsIn" />
-                <ScalarProperty Name="WareHouseId" ColumnName="WareHouseId" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="WareHouseId" ColumnName="WareHouseId" />
+                <ScalarProperty Name="IsIn" ColumnName="IsIn" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="ContractId" ColumnName="ContractId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="MovementId" ColumnName="MovementId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Order">
               <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="IsSale" ColumnName="IsSale" />
                 <ScalarProperty Name="ContractId" ColumnName="ContractId" />
+                <ScalarProperty Name="IsSale" ColumnName="IsSale" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Teams">
             <EntityTypeMapping TypeName="DeskAssemblyModel.Team">
               <MappingFragment StoreEntitySet="Team">
-                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WareHouses">
             <EntityTypeMapping TypeName="DeskAssemblyModel.WareHouse">
               <MappingFragment StoreEntitySet="WareHouse">
-                <ScalarProperty Name="WarehouseId" ColumnName="WarehouseId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Areasize" ColumnName="Areasize" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="WarehouseId" ColumnName="WarehouseId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

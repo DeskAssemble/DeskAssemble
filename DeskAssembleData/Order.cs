@@ -18,12 +18,14 @@ namespace DeskAssembleData
         public int ItemId { get; set; }
         public System.DateTime Date { get; set; }
         public int TeamId { get; set; }
-        public string Quantity { get; set; }
+        public int Quantity { get; set; }
         public bool IsSale { get; set; }
         public int ContractId { get; set; }
     
         public virtual Contract Contract { get; set; }
         public virtual Item Item { get; set; }
         public virtual Team Team { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
