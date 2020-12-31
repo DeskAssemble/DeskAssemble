@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraMap;
 using DeskAssembleData.Dao;
+using DeskAssembleData;
 
 namespace DeskAssemble
 {
@@ -26,5 +27,14 @@ namespace DeskAssemble
 
             mapChartModelBindingSource.DataSource = Dao.Order.GetPurchasedCountryModels();
         }
+
+        private void mapControl1_MapItemClick(object sender, MapItemClickEventArgs e)
+        {
+            MapBubble a = e.Item as MapBubble;
+
+            if (a != null)
+                MessageBox.Show(Convert.ToString(a));
+        }
     }
+    
 }

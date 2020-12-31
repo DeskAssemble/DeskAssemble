@@ -251,6 +251,7 @@
     <None Include="Properties\DataSources\DeskAssembleData.Data.Purchasemodel2.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Data.Salemodel2.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Item.datasource" />
+    <None Include="Properties\DataSources\DeskAssembleData.Model.MapChartDetailModel.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Model.MapChartModel.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Order.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.WareHouse.datasource" />

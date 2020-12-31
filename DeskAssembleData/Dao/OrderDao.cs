@@ -13,7 +13,6 @@ namespace DeskAssembleData
 {
     public class OrderDao : SingleKeyDao<Order, int>
     {
-
         protected override Expression<Func<Order, int>> KeySelector => throw new NotImplementedException();
 
         public List<Order> GetByPK(string orderId)
@@ -133,53 +132,60 @@ namespace DeskAssembleData
         //국가별 부품 구매량 모델
         public List<MapChartModel> GetPurchasedCountryModels()
         {
+            using (var context = DbContextCreator.Create())
             {
-                using (var context = DbContextCreator.Create())
+                var countries = context.Countries.ToList();
+                
+                List<MapChartModel> models = new List<MapChartModel>();
+                
+                foreach (Country country in countries)
                 {
-                    var countries = context.Countries.ToList();
+                    var query = from x in context.Orders
+                                where x.Contract.CountryId == country.CountryId && x.IsSale == false
+                                select x.Quantity;
 
-                    List<MapChartModel> models = new List<MapChartModel>();
-                    foreach (Country country in countries)
-                    {
-                        var query = from x in context.Orders
-                                    where x.Contract.CountryId == country.CountryId && x.IsSale == false
-                                    select x.Quantity;
+                    var list = query.ToList();
 
-                        var list = query.ToList();
-                        MapChartModel model = new MapChartModel();
-                        model.Value = list.Sum();
-                        model.Latitude = country.Latitude;
-                        model.Longitude = country.Longitude;
+                    MapChartModel model = new MapChartModel();
 
-                        models.Add(model);
-                    }
+                    model.Value = list.Sum();
+                    model.Latitude = country.Latitude;
+                    model.Longitude = country.Longitude;
+                    model.Name = country.Name;
+                    model.CountryId = country.CountryId;
 
-                    return models;
+                    models.Add(model);
                 }
+                    return models;
             }
-
         }
+
         //국가별 제품 판매량 모델
         public List<MapChartModel> GetSoldCountryModels()
         {
+            using (var context = DbContextCreator.Create())
             {
-                using (var context = DbContextCreator.Create())
+                var countries = context.Countries.ToList();
+
+                List<MapChartModel> models = new List<MapChartModel>();
+
+                foreach (Country country in countries)
                 {
-                    var countries = context.Countries.ToList();
+                    var query = from x in context.Orders
+                                where x.Contract.CountryId == country.CountryId && x.IsSale == true
+                                select x.Quantity;
 
-                    List<MapChartModel> models = new List<MapChartModel>();
-                    foreach (Country country in countries)
-                    {
-                        var query = from x in context.Orders
-                                    where x.Contract.CountryId == country.CountryId && x.IsSale == true
-                                    select x.Quantity;
+                    var list = query.ToList();
+                    MapChartModel model = new MapChartModel();
+                    model.Value = list.Sum();
+                    model.Latitude = country.Latitude;
+                    model.Longitude = country.Longitude;
 
-                        var list = query.ToList();
-                        MapChartModel model = new MapChartModel();
-                        model.Value = list.Sum();
-                        model.Latitude = country.Latitude;
-                        model.Longitude = country.Longitude;
-
+                    models.Add(model);
+                }
+                return models;
+            }
+        }
                         models.Add(model);
                     }
 
@@ -208,6 +214,19 @@ namespace DeskAssembleData
                     item.Order.ContractName = item.ContractName;
                 }
 
+        //국가별 부품 구매량 상세 모델
+        //public List<MapChartDetailModel> GetPurchasedCountryDetailModels(int countryId)
+        //{
+        //    using (var context = DbContextCreator.Create())
+        //    {
+        //        var Orders = context.Orders.ToList();
+
+        //        var query = from x in context.Orders
+        //                    where x.Contract.CountryId == countryId && x.IsSale == false
+        //                    select new { Quantity = x.Quantity, ContractName = x.Contract.Name, ItemName = x.Item };
+        //    }
+
+        //}
                 return list.Select(x => x.Order).ToList();
             }
         }
