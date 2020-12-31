@@ -31,30 +31,35 @@ namespace DeskAssemble
         {
             this.components = new System.ComponentModel.Container();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colOrderId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colItemId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTeamId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsSale = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colContractId = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
             // 
             this.gridControl1.DataSource = this.orderBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(12, 12);
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(899, 522);
+            this.gridControl1.Size = new System.Drawing.Size(923, 546);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            // 
+            // orderBindingSource
+            // 
+            this.orderBindingSource.DataSource = typeof(DeskAssembleData.Order);
             // 
             // gridView1
             // 
@@ -64,14 +69,9 @@ namespace DeskAssemble
             this.colDate,
             this.colTeamId,
             this.colQuantity,
-            this.colIsSale,
             this.colContractId});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            // 
-            // orderBindingSource
-            // 
-            this.orderBindingSource.DataSource = typeof(DeskAssembleData.Order);
             // 
             // colOrderId
             // 
@@ -80,48 +80,52 @@ namespace DeskAssemble
             this.colOrderId.Name = "colOrderId";
             this.colOrderId.Visible = true;
             this.colOrderId.VisibleIndex = 0;
+            this.colOrderId.Width = 70;
             // 
             // colItemId
             // 
-            this.colItemId.FieldName = "ItemId";
+            this.colItemId.Caption = "주문항목";
+            this.colItemId.FieldName = "ItemName";
             this.colItemId.Name = "colItemId";
             this.colItemId.Visible = true;
             this.colItemId.VisibleIndex = 1;
+            this.colItemId.Width = 92;
             // 
             // colDate
             // 
+            this.colDate.Caption = "날짜";
             this.colDate.FieldName = "Date";
             this.colDate.Name = "colDate";
             this.colDate.Visible = true;
             this.colDate.VisibleIndex = 2;
+            this.colDate.Width = 178;
             // 
             // colTeamId
             // 
-            this.colTeamId.FieldName = "TeamId";
+            this.colTeamId.Caption = "담당부서";
+            this.colTeamId.FieldName = "TeamName";
             this.colTeamId.Name = "colTeamId";
             this.colTeamId.Visible = true;
             this.colTeamId.VisibleIndex = 3;
+            this.colTeamId.Width = 172;
             // 
             // colQuantity
             // 
+            this.colQuantity.Caption = "수량(개)";
             this.colQuantity.FieldName = "Quantity";
             this.colQuantity.Name = "colQuantity";
             this.colQuantity.Visible = true;
             this.colQuantity.VisibleIndex = 4;
-            // 
-            // colIsSale
-            // 
-            this.colIsSale.FieldName = "IsSale";
-            this.colIsSale.Name = "colIsSale";
-            this.colIsSale.Visible = true;
-            this.colIsSale.VisibleIndex = 5;
+            this.colQuantity.Width = 155;
             // 
             // colContractId
             // 
-            this.colContractId.FieldName = "ContractId";
+            this.colContractId.Caption = "거래처";
+            this.colContractId.FieldName = "ContractName";
             this.colContractId.Name = "colContractId";
             this.colContractId.Visible = true;
-            this.colContractId.VisibleIndex = 6;
+            this.colContractId.VisibleIndex = 5;
+            this.colContractId.Width = 231;
             // 
             // OrderListForm
             // 
@@ -132,8 +136,8 @@ namespace DeskAssemble
             this.Name = "OrderListForm";
             this.Text = "주문 리스트";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -148,7 +152,6 @@ namespace DeskAssemble
         private DevExpress.XtraGrid.Columns.GridColumn colDate;
         private DevExpress.XtraGrid.Columns.GridColumn colTeamId;
         private DevExpress.XtraGrid.Columns.GridColumn colQuantity;
-        private DevExpress.XtraGrid.Columns.GridColumn colIsSale;
         private DevExpress.XtraGrid.Columns.GridColumn colContractId;
     }
 }

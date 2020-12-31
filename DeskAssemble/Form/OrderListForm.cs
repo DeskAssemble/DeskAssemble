@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraEditors;
+﻿using DeskAssembleData;
+using DeskAssembleData.Dao;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,5 +19,13 @@ namespace DeskAssemble
         {
             InitializeComponent();
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            List<Order> list = Dao.Order.Search();
+            orderBindingSource.DataSource = list;
+            base.OnLoad(e);
+        }
     }
+
 }

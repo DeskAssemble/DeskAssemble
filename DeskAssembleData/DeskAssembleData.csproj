@@ -90,6 +90,7 @@
     <Compile Include="EFLibrary\BaseDao.cs" />
     <Compile Include="EFLibrary\DbContextCreator.cs" />
     <Compile Include="EFLibrary\SingleKeyDao.cs" />
+    <Compile Include="Entities\Order.cs" />
     <Compile Include="Expense.cs">
       <DependentUpon>DeskAssemble.tt</DependentUpon>
     </Compile>
@@ -113,9 +114,7 @@
       <DependentUpon>DeskAssemble.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.Config" />
     <EntityDeploy Include="DeskAssemble.edmx">

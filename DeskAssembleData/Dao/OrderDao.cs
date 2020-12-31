@@ -169,7 +169,30 @@ namespace DeskAssembleData
                     return models;
                 }
             }
+        }
+        public List<Order> Search()
+        {
+            using (DeskAssemblyEntities context = DbContextCreator.Create())
+            {
+                var query = from x in context.Orders
+                            select new
+                            {
+                                Order = x,
+                                ItemName = x.Item.Name,
+                                TeamName = x.Team.Name,
+                                ContractName = x.Contract.Name,
+                            };
 
+                var list = query.ToList();
+                foreach(var item in list)
+                {
+                    item.Order.ItemName = item.ItemName;
+                    item.Order.TeamName = item.TeamName;
+                    item.Order.ContractName = item.ContractName;
+                }
+
+                return list.Select(x => x.Order).ToList();
+            }
         }
     }
 
