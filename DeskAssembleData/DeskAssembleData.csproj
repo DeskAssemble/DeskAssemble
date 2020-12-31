@@ -116,7 +116,18 @@
       <DependentUpon>DeskAssemble.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DeskAssemble.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DeskAssemble.Context.cs</LastGenOutput>
+      <DependentUpon>DeskAssemble.edmx</DependentUpon>
+    </Content>
+    <Content Include="DeskAssemble.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DeskAssemble.edmx</DependentUpon>
+      <LastGenOutput>DeskAssemble.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <EntityDeploy Include="DeskAssemble.edmx">
@@ -130,18 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DeskAssemble.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DeskAssemble.edmx</DependentUpon>
-      <LastGenOutput>DeskAssemble.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DeskAssemble.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DeskAssemble.edmx</DependentUpon>
-      <LastGenOutput>DeskAssemble.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

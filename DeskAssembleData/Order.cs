@@ -23,7 +23,7 @@ namespace DeskAssembleData
         public int ContractId { get; set; }
     
         public virtual Contract Contract { get; set; }
-        public virtual Team Team { get; set; }
         public virtual Item Item { get; set; }
+        public virtual Team Team { get; set; }
     }
 }

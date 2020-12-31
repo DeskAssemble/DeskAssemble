@@ -23,7 +23,7 @@ namespace DeskAssembleData
         public int Quantity { get; set; }
     
         public virtual Contract Contract { get; set; }
-        public virtual WareHouse WareHouse { get; set; }
         public virtual Item Item { get; set; }
+        public virtual WareHouse WareHouse { get; set; }
     }
 }

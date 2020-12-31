@@ -297,7 +297,7 @@ namespace DeskAssembleRFID
             try
             {
                 SqlConnection DeskConn = new SqlConnection();
-                DeskConn.ConnectionString = "Server = 10.10.31.22; database = DeskAssembly; uid = sa; pwd = 3512";
+                DeskConn.ConnectionString = "Server = cn76.ipdisk.co.kr,3423; database = DeskAssembly; uid = 8F; pwd = 1";
                 DeskConn.Open();
 
                 SqlCommand Command = new SqlCommand();
