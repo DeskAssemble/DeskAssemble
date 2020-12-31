@@ -8,7 +8,7 @@ namespace DeskAssembleData.EFLibrary
 {
     public class DbContextCreator
     {
-        private const string ConnectionString = "metadata=res://*/DeskAssemble.csdl|res://*/DeskAssemble.ssdl|res://*/DeskAssemble.msl;provider=System.Data.SqlClient;provider connection string=\"data source=10.10.31.22;initial catalog=DeskAssembly;user id=sa;password=3512;MultipleActiveResultSets=True;App=EntityFramework\"";
+        private const string ConnectionString = "metadata=res://*/DeskAssemble.csdl|res://*/DeskAssemble.ssdl|res://*/DeskAssemble.msl;provider=System.Data.SqlClient;provider connection string=\"data source=cn76.ipdisk.co.kr,3423;initial catalog=DeskAssembly;user id=8F;password=1;MultipleActiveResultSets=True;App=EntityFramework\"";
         public static DeskAssemblyEntities Create()
         {
             DeskAssemblyEntities context = new DeskAssemblyEntities(ConnectionString);

@@ -199,8 +199,7 @@ namespace DeskAssembleData
         //                    select new { Quantity = x.Quantity, ContractName = x.Contract.Name, ItemName = x.Item };
         //    }
 
-        //}       
-
+        //}
 
         public List<Order> Search()
         {
@@ -223,7 +222,6 @@ namespace DeskAssembleData
                     item.Order.ContractName = item.ContractName;
                 }
 
-        
                 return list.Select(x => x.Order).ToList();
             }
         }
