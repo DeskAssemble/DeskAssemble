@@ -186,13 +186,22 @@ namespace DeskAssembleData
                 return models;
             }
         }
-                        models.Add(model);
-                    }
 
-                    return models;
-                }
-            }
-        }
+        //국가별 부품 구매량 상세 모델
+        //public List<MapChartDetailModel> GetPurchasedCountryDetailModels(int countryId)
+        //{
+        //    using (var context = DbContextCreator.Create())
+        //    {
+        //        var Orders = context.Orders.ToList();
+
+        //        var query = from x in context.Orders
+        //                    where x.Contract.CountryId == countryId && x.IsSale == false
+        //                    select new { Quantity = x.Quantity, ContractName = x.Contract.Name, ItemName = x.Item };
+        //    }
+
+        //}       
+
+
         public List<Order> Search()
         {
             using (DeskAssemblyEntities context = DbContextCreator.Create())
@@ -214,19 +223,7 @@ namespace DeskAssembleData
                     item.Order.ContractName = item.ContractName;
                 }
 
-        //국가별 부품 구매량 상세 모델
-        //public List<MapChartDetailModel> GetPurchasedCountryDetailModels(int countryId)
-        //{
-        //    using (var context = DbContextCreator.Create())
-        //    {
-        //        var Orders = context.Orders.ToList();
-
-        //        var query = from x in context.Orders
-        //                    where x.Contract.CountryId == countryId && x.IsSale == false
-        //                    select new { Quantity = x.Quantity, ContractName = x.Contract.Name, ItemName = x.Item };
-        //    }
-
-        //}
+        
                 return list.Select(x => x.Order).ToList();
             }
         }
