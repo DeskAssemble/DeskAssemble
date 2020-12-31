@@ -56,27 +56,44 @@ namespace DeskAssembleData
             {
                 using (var context = DbContextCreator.Create())
                 {
-                    var PartNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
-                    var items = context.Items.ToList();
+                    List<Item> Items = context.Items.ToList();
 
-                    List<Purchasemodel2> pmodels = new List<Purchasemodel2>();
-                    foreach (Item item in items)
-                    {
-                        var query = from o in context.Orders
-                                    where o.ItemId == item.ItemId && o.IsSale == false
-                                    select o.Quantity;
+                    var query = from i in context.Items
+                                join o in context.Orders on i.ItemId equals o.ItemId
+                                where i.IsProduct == false && o.IsSale == false
+                                select new { CategoryId = i.CategoryId, ItemId = i.ItemId, Quantity = o.Quantity };
 
-                        var list = query.ToList();
-                        Purchasemodel2 pmodel = new Purchasemodel2();
-                        pmodel.Quantity = list.Sum();
-                        pmodel.ItemId = item.ItemId;
-                        pmodel.PartName = item.Name;
 
-                        pmodels.Add(pmodel);
-                    }
+                    var query1 = query.GroupBy(x => x.CategoryId, x => x.Quantity,
+                        (key, info) => new Purchasemodel2 { CategoryId = key, Quantity = info.Sum() });
 
-                    return pmodels;
+                    return query1.ToList();
                 }
+                //using (var context = DbContextCreator.Create())
+                //{
+                //    var PartNames = context.Items.ToDictionary(x => x.CategoryId, x => x.Name);
+
+                //    var query = from i in context.Items
+                //                where i.IsProduct == false
+                //                select new { Quantities = i.Orders.Sum(q => q.Quantity), CategoryId = i.CategoryId };
+
+                //    var query2 = from x in query
+                //                 group x by x.CategoryId into g
+                //                 select g;
+
+                //    var pmodels = new List<Purchasemodel2>();
+                //    foreach (var group in query2)
+                //    {
+                //        Purchasemodel2 pmodel = new Purchasemodel2();
+                //        pmodel.CategoryId = group.Key;
+                //        pmodel.Quantity = group.Sum(g => g.Quantities);
+                //        pmodel.PartName = PartNames[group.Key];
+
+                //        pmodels.Add(pmodel);
+                //    }
+
+                //    return pmodels;
+                //}
             }
         }
 
@@ -169,6 +186,33 @@ namespace DeskAssembleData
                 return models;
             }
         }
+                        models.Add(model);
+                    }
+
+                    return models;
+                }
+            }
+        }
+        public List<Order> Search()
+        {
+            using (DeskAssemblyEntities context = DbContextCreator.Create())
+            {
+                var query = from x in context.Orders
+                            select new
+                            {
+                                Order = x,
+                                ItemName = x.Item.Name,
+                                TeamName = x.Team.Name,
+                                ContractName = x.Contract.Name,
+                            };
+
+                var list = query.ToList();
+                foreach(var item in list)
+                {
+                    item.Order.ItemName = item.ItemName;
+                    item.Order.TeamName = item.TeamName;
+                    item.Order.ContractName = item.ContractName;
+                }
 
         //국가별 부품 구매량 상세 모델
         //public List<MapChartDetailModel> GetPurchasedCountryDetailModels(int countryId)
@@ -183,6 +227,9 @@ namespace DeskAssembleData
         //    }
 
         //}
+                return list.Select(x => x.Order).ToList();
+            }
+        }
     }
 
     

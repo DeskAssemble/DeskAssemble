@@ -315,6 +315,22 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Cost" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsProduct" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ContainerId" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Item1" Relationship="DeskAssemblyModel.FK_Item_Item" FromRole="Item" ToRole="Item1" />
+          <NavigationProperty Name="Item2" Relationship="DeskAssemblyModel.FK_Item_Item" FromRole="Item1" ToRole="Item" />
+          <NavigationProperty Name="Movements" Relationship="DeskAssemblyModel.FK_Movement_Item" FromRole="Item" ToRole="Movement" />
+          <NavigationProperty Name="Orders" Relationship="DeskAssemblyModel.FK_Order_Item" FromRole="Item" ToRole="Order" />
+        </EntityType>
         <EntityType Name="Movement">
           <Key>
             <PropertyRef Name="MovementId" />
@@ -334,7 +350,7 @@
           <Key>
             <PropertyRef Name="OrderId" />
           </Key>
-          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ItemId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TeamId" Type="Int32" Nullable="false" />
@@ -516,6 +532,19 @@
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="DeskAssemblyModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ContainerId" ColumnName="ContainerId" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsProduct" ColumnName="IsProduct" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
