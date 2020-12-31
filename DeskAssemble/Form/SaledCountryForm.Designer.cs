@@ -29,19 +29,60 @@ namespace DeskAssemble
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.mapControl1 = new DevExpress.XtraMap.MapControl();
+            this.bingMapDataProvider1 = new DevExpress.XtraMap.BingMapDataProvider();
+            this.imageLayer1 = new DevExpress.XtraMap.ImageLayer();
+            this.vectorItemsLayer1 = new DevExpress.XtraMap.VectorItemsLayer();
+            this.bubbleChartDataAdapter1 = new DevExpress.XtraMap.BubbleChartDataAdapter();
+            this.mapChartModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.mapControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mapChartModelBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // mapControl1
+            // 
+            this.mapControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapControl1.Layers.Add(this.imageLayer1);
+            this.mapControl1.Layers.Add(this.vectorItemsLayer1);
+            this.mapControl1.Location = new System.Drawing.Point(0, 0);
+            this.mapControl1.Name = "mapControl1";
+            this.mapControl1.Size = new System.Drawing.Size(1087, 541);
+            this.mapControl1.TabIndex = 0;
+            this.bingMapDataProvider1.BingKey = "AgvMO35OGV6SrETYJ66iBZkuemtqDfYvwqHv4in8tjYI7TJU5zG5SZYI-3l-vZZC";
+            this.bingMapDataProvider1.Kind = DevExpress.XtraMap.BingMapKind.Road;
+            this.imageLayer1.DataProvider = this.bingMapDataProvider1;
+            this.vectorItemsLayer1.Data = this.bubbleChartDataAdapter1;
+            this.bubbleChartDataAdapter1.DataSource = this.mapChartModelBindingSource;
+            this.bubbleChartDataAdapter1.Mappings.Latitude = "Latitude";
+            this.bubbleChartDataAdapter1.Mappings.Longitude = "Longitude";
+            this.bubbleChartDataAdapter1.Mappings.Value = "Value";
+            // 
+            // mapChartModelBindingSource
+            // 
+            this.mapChartModelBindingSource.DataSource = typeof(DeskAssembleData.Model.MapChartModel);
             // 
             // SaledCountryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 299);
+            this.ClientSize = new System.Drawing.Size(1087, 541);
+            this.Controls.Add(this.mapControl1);
             this.Name = "SaledCountryForm";
             this.Text = "국가별 제품 판매량";
+            ((System.ComponentModel.ISupportInitialize)(this.mapControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mapChartModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private DevExpress.XtraMap.MapControl mapControl1;
+        private DevExpress.XtraMap.ImageLayer imageLayer1;
+        private DevExpress.XtraMap.BingMapDataProvider bingMapDataProvider1;
+        private DevExpress.XtraMap.VectorItemsLayer vectorItemsLayer1;
+        private DevExpress.XtraMap.BubbleChartDataAdapter bubbleChartDataAdapter1;
+        private System.Windows.Forms.BindingSource mapChartModelBindingSource;
     }
 }
