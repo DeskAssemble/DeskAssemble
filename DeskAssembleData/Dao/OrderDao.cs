@@ -130,6 +130,7 @@ namespace DeskAssembleData
                 }
         }
 
+        //국가별 부품 구매량 모델
         public List<MapChartModel> GetPurchasedCountryModels()
         {
             {
@@ -158,8 +159,35 @@ namespace DeskAssembleData
             }
 
         }
+        //국가별 제품 판매량 모델
+        public List<MapChartModel> GetSoldCountryModels()
+        {
+            {
+                using (var context = DbContextCreator.Create())
+                {
+                    var countries = context.Countries.ToList();
 
+                    List<MapChartModel> models = new List<MapChartModel>();
+                    foreach (Country country in countries)
+                    {
+                        var query = from x in context.Orders
+                                    where x.Contract.CountryId == country.CountryId && x.IsSale == true
+                                    select x.Quantity;
 
+                        var list = query.ToList();
+                        MapChartModel model = new MapChartModel();
+                        model.Value = list.Sum();
+                        model.Latitude = country.Latitude;
+                        model.Longitude = country.Longitude;
+
+                        models.Add(model);
+                    }
+
+                    return models;
+                }
+            }
+
+        }
     }
 
     
