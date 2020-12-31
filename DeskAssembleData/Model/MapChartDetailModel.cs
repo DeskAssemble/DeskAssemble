@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace DeskAssembleData.Model
 {
-    public class MapChartModel
+    public class MapChartDetailModel
     {
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-        public int Value { get; set; }
-        public string Name { get; set; }
         public int CountryId { get; set; }
+        public string ItemName { get; set; }
+        public string ContractName { get; set; }
+        public int Value { get; set; }
     }
 }
