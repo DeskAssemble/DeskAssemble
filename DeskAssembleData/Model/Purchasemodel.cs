@@ -20,9 +20,9 @@ namespace DeskAssembleData.Data
     }
     public class Purchasemodel2
     {
-        public int ItemId { get; set; }
+        public int CategoryId { get; set; }
 
-        public string PartName { get; set; }
+        //public string PartName { get; set; }
 
         public int Quantity { get; set; }
 

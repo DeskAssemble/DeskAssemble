@@ -1,4 +1,5 @@
 ﻿using DeskAssembleData.Dao;
+using DeskAssembleData.Data;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,18 @@ namespace DeskAssemble
 
 
             purchasemodel2BindingSource.DataSource = Dao.Order.GetPurchasemodelModels();
+        }
+
+        private void chartControl1_SelectedItemsChanged(object sender, DevExpress.XtraCharts.SelectedItemsChangedEventArgs e)
+        {
+            Purchasemodel2 selectedItem = chartControl1.SelectedItems[0] as Purchasemodel2;
+
+            if (selectedItem == null)
+                return;
+
+            PurchasedPartDetailForm newPurchasedPart = new PurchasedPartDetailForm(this, selectedItem);
+            newPurchasedPart.Show();
+
         }
     }
 }
