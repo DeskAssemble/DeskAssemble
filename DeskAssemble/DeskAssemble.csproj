@@ -253,6 +253,8 @@
     <None Include="Properties\DataSources\DeskAssembleData.Item.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Model.MapChartModel.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Order.datasource" />
+    <None Include="Properties\DataSources\DeskAssembleData.WareHouse.datasource" />
+    <None Include="Properties\DataSources\DeskAssembleData.WareHouseModel.datasource" />
     <None Include="Properties\DataSources\ProductCatalogueForm.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

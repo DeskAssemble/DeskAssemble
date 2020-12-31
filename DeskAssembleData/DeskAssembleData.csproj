@@ -100,6 +100,7 @@
     <Compile Include="Model\MapChartModel.cs" />
     <Compile Include="Model\Purchasemodel.cs" />
     <Compile Include="Model\Salemodel.cs" />
+    <Compile Include="Model\WareHouseModel.cs" />
     <Compile Include="Movement.cs">
       <DependentUpon>DeskAssemble.tt</DependentUpon>
     </Compile>
