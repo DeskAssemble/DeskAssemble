@@ -119,7 +119,7 @@ namespace DeskAssembleRFID
             this.radioGroup1.Name = "radioGroup1";
             this.radioGroup1.Properties.Columns = 2;
             this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "In", true, null, "In"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "In", false, null, "In"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Out", true, null, "Out")});
             this.radioGroup1.Size = new System.Drawing.Size(90, 42);
             this.radioGroup1.TabIndex = 6;
