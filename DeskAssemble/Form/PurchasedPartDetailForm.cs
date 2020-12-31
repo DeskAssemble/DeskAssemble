@@ -22,8 +22,6 @@ namespace DeskAssemble
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
-            //mapChartDetailModelBindingSource.DataSource = Dao.Order.GetPurchasedCountryDetailModels(int countryId);
         }
     }
 }

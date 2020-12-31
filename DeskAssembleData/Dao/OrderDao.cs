@@ -186,9 +186,7 @@ namespace DeskAssembleData
             
                 return models;
             }
-        }
-
-        
+        }   
     }
 
     
