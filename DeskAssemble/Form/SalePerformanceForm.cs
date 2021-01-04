@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using DeskAssembleData.Dao;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,11 @@ namespace DeskAssemble.Form
         public SalePerformanceForm()
         {
             InitializeComponent();
+        }
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            salesPerformanceModelBindingSource.DataSource = Dao.Team.GetModel();
         }
     }
 }

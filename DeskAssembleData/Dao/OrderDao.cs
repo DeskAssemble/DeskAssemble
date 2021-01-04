@@ -226,7 +226,6 @@ namespace DeskAssembleData
                     else
                         item.Order.IsSaleName = "구매";
                 }
-
                 return list.Select(x => x.Order).ToList();
             }
         }

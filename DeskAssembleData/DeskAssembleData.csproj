@@ -92,6 +92,7 @@
     <Compile Include="EFLibrary\SingleKeyDao.cs" />
     <Compile Include="Entities\Movement.cs" />
     <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\WareHouse.cs" />
     <Compile Include="Expense.cs">
       <DependentUpon>DeskAssemble.tt</DependentUpon>
     </Compile>
@@ -102,6 +103,7 @@
     <Compile Include="Model\MapChartModel.cs" />
     <Compile Include="Model\Purchasemodel.cs" />
     <Compile Include="Model\Salemodel.cs" />
+    <Compile Include="Model\SalesPerformanceModel.cs" />
     <Compile Include="Model\WareHouseModel.cs" />
     <Compile Include="Movement.cs">
       <DependentUpon>DeskAssemble.tt</DependentUpon>

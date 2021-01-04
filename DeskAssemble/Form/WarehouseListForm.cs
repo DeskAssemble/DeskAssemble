@@ -30,6 +30,7 @@ namespace DeskAssemble
         {
             List<WareHouseModel> list = Dao.WareHouse.GetQuantity();
             wareHouseModelBindingSource.DataSource = list;
+
         }
     }
 }

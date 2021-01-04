@@ -14,7 +14,7 @@ namespace DeskAssembleData.Dao
 
         public List<WareHouseModel> GetQuantity()
         {
-            using (DeskAssemblyEntities context = (DeskAssemblyEntities)DbContextCreator.Create())
+            using (DeskAssemblyEntities context = DbContextCreator.Create())
             {
                 Dictionary<int, string> itemNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
                 Dictionary<int, string> warehouseNames = context.WareHouses.ToDictionary(x => x.WarehouseId, x => x.Name);
@@ -23,12 +23,13 @@ namespace DeskAssembleData.Dao
                             group x by x.ItemId into g
                             select g;
 
-                List<WareHouseModel> models = new List<WareHouseModel>();
+                List < WareHouseModel > models = new List<WareHouseModel>();
 
                 foreach (var @group in query)
                 {
                     WareHouseModel model = new WareHouseModel(group.Key, group.Sum(x => x.Quantity));
                     model.ItemName = itemNames[model.ItemId];
+                    model.WareHouseName = warehouseNames[model.WareHouseId];
                     models.Add(model);
                 }
                 return models;

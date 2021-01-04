@@ -96,7 +96,7 @@ namespace DeskAssemble
             // colDate
             // 
             this.colDate.Caption = "날짜";
-            this.colDate.FieldName = "Date";
+            this.colDate.FieldName = "ContractName";
             this.colDate.Name = "colDate";
             this.colDate.Visible = true;
             this.colDate.VisibleIndex = 4;
