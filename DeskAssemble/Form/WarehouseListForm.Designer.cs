@@ -37,26 +37,27 @@ namespace DeskAssemble
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAreasize = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
+            this.wareHouseModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colWareHouseName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colItemName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.wareHouseModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wareHouseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wareHouseModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
             // 
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControl1.DataSource = this.wareHouseBindingSource;
             this.gridControl1.Location = new System.Drawing.Point(12, 12);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(996, 108);
+            this.gridControl1.Size = new System.Drawing.Size(816, 108);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -101,15 +102,20 @@ namespace DeskAssemble
             // 
             // gridControl2
             // 
+            this.gridControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControl2.DataSource = this.wareHouseModelBindingSource;
             this.gridControl2.Location = new System.Drawing.Point(12, 126);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(996, 489);
+            this.gridControl2.Size = new System.Drawing.Size(817, 489);
             this.gridControl2.TabIndex = 1;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
             this.gridControl2.Load += new System.EventHandler(this.WarehouseQuantity_Load);
+            // 
+            // wareHouseModelBindingSource
+            // 
+            this.wareHouseModelBindingSource.DataSource = typeof(DeskAssembleData.WareHouseModel);
             // 
             // gridView2
             // 
@@ -144,15 +150,11 @@ namespace DeskAssemble
             this.colItemName.Visible = true;
             this.colItemName.VisibleIndex = 1;
             // 
-            // wareHouseModelBindingSource
-            // 
-            this.wareHouseModelBindingSource.DataSource = typeof(DeskAssembleData.WareHouseModel);
-            // 
             // WarehouseListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1020, 627);
+            this.ClientSize = new System.Drawing.Size(841, 627);
             this.Controls.Add(this.gridControl2);
             this.Controls.Add(this.gridControl1);
             this.Name = "WarehouseListForm";
@@ -161,8 +163,8 @@ namespace DeskAssemble
             ((System.ComponentModel.ISupportInitialize)(this.wareHouseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wareHouseModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.ResumeLayout(false);
 
         }

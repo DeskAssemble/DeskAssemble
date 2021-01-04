@@ -23,7 +23,7 @@ namespace DeskAssembleRFID
         {
             if (!serialPort1.IsOpen)
             {
-                serialPort1.PortName = "COM5";
+                serialPort1.PortName = "COM3";
                 serialPort1.Open();
             }
 

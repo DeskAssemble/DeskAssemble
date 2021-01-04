@@ -39,6 +39,7 @@ namespace DeskAssemble
             this.colTeamId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colContractId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -69,7 +70,8 @@ namespace DeskAssemble
             this.colDate,
             this.colTeamId,
             this.colQuantity,
-            this.colContractId});
+            this.colContractId,
+            this.gridColumn1});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
@@ -80,16 +82,16 @@ namespace DeskAssemble
             this.colOrderId.Name = "colOrderId";
             this.colOrderId.Visible = true;
             this.colOrderId.VisibleIndex = 0;
-            this.colOrderId.Width = 70;
+            this.colOrderId.Width = 64;
             // 
             // colItemId
             // 
-            this.colItemId.Caption = "주문항목";
+            this.colItemId.Caption = "품목";
             this.colItemId.FieldName = "ItemName";
             this.colItemId.Name = "colItemId";
             this.colItemId.Visible = true;
             this.colItemId.VisibleIndex = 1;
-            this.colItemId.Width = 92;
+            this.colItemId.Width = 84;
             // 
             // colDate
             // 
@@ -97,8 +99,8 @@ namespace DeskAssemble
             this.colDate.FieldName = "Date";
             this.colDate.Name = "colDate";
             this.colDate.Visible = true;
-            this.colDate.VisibleIndex = 2;
-            this.colDate.Width = 178;
+            this.colDate.VisibleIndex = 4;
+            this.colDate.Width = 164;
             // 
             // colTeamId
             // 
@@ -106,8 +108,8 @@ namespace DeskAssemble
             this.colTeamId.FieldName = "TeamName";
             this.colTeamId.Name = "colTeamId";
             this.colTeamId.Visible = true;
-            this.colTeamId.VisibleIndex = 3;
-            this.colTeamId.Width = 172;
+            this.colTeamId.VisibleIndex = 5;
+            this.colTeamId.Width = 158;
             // 
             // colQuantity
             // 
@@ -115,8 +117,8 @@ namespace DeskAssemble
             this.colQuantity.FieldName = "Quantity";
             this.colQuantity.Name = "colQuantity";
             this.colQuantity.Visible = true;
-            this.colQuantity.VisibleIndex = 4;
-            this.colQuantity.Width = 155;
+            this.colQuantity.VisibleIndex = 2;
+            this.colQuantity.Width = 143;
             // 
             // colContractId
             // 
@@ -124,8 +126,17 @@ namespace DeskAssemble
             this.colContractId.FieldName = "ContractName";
             this.colContractId.Name = "colContractId";
             this.colContractId.Visible = true;
-            this.colContractId.VisibleIndex = 5;
-            this.colContractId.Width = 231;
+            this.colContractId.VisibleIndex = 6;
+            this.colContractId.Width = 160;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "구분";
+            this.gridColumn1.FieldName = "IsSaleName";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 3;
+            this.gridColumn1.Width = 125;
             // 
             // OrderListForm
             // 
@@ -153,5 +164,6 @@ namespace DeskAssemble
         private DevExpress.XtraGrid.Columns.GridColumn colTeamId;
         private DevExpress.XtraGrid.Columns.GridColumn colQuantity;
         private DevExpress.XtraGrid.Columns.GridColumn colContractId;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraEditors;
+﻿using DeskAssembleData;
+using DeskAssembleData.Dao;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +18,13 @@ namespace DeskAssemble
         public InOutForm()
         {
             InitializeComponent();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            List<Movement> list = Dao.Movement.Search();
+            movementBindingSource.DataSource = list;
+            base.OnLoad(e);
         }
     }
 }

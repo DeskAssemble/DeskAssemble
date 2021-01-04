@@ -90,6 +90,7 @@
     <Compile Include="EFLibrary\BaseDao.cs" />
     <Compile Include="EFLibrary\DbContextCreator.cs" />
     <Compile Include="EFLibrary\SingleKeyDao.cs" />
+    <Compile Include="Entities\Movement.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Expense.cs">
       <DependentUpon>DeskAssemble.tt</DependentUpon>

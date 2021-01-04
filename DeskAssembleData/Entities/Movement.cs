@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DeskAssembleData
 {
-    public partial class Order
+    public partial class Movement
     {
         public string ItemName { get; set; }
-        public string TeamName { get; set; }
         public string ContractName { get; set; }
-        public string IsSaleName { get; set; }
+        public string WareHouseName { get; set; }
+        public string IsInName { get; set; }
     }
 }

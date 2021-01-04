@@ -212,6 +212,7 @@ namespace DeskAssembleData
                                 ItemName = x.Item.Name,
                                 TeamName = x.Team.Name,
                                 ContractName = x.Contract.Name,
+                                IsSaleName = x.IsSale
                             };
 
                 var list = query.ToList();
@@ -220,6 +221,10 @@ namespace DeskAssembleData
                     item.Order.ItemName = item.ItemName;
                     item.Order.TeamName = item.TeamName;
                     item.Order.ContractName = item.ContractName;
+                    if (item.Order.IsSale == true)
+                        item.Order.IsSaleName = "판매";
+                    else
+                        item.Order.IsSaleName = "구매";
                 }
 
                 return list.Select(x => x.Order).ToList();
