@@ -17,7 +17,7 @@ namespace DeskAssembleData.Dao
             using (DeskAssemblyEntities context = (DeskAssemblyEntities)DbContextCreator.Create())
             {
                 Dictionary<int, string> itemNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
-                //Dictionary<int, string> warehouseNames = context.WareHouses.ToDictionary(x => x.WarehouseId, x => x.Name);
+                Dictionary<int, string> warehouseNames = context.WareHouses.ToDictionary(x => x.WarehouseId, x => x.Name);
 
                 var query = from x in context.Movements
                             group x by x.ItemId into g
