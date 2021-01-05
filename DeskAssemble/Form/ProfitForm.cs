@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using DeskAssembleData.Dao;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,13 @@ namespace DeskAssemble
         public ProfitForm()
         {
             InitializeComponent();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            orderBindingSource.DataSource = Dao.Order.Pivot();
         }
     }
 }
