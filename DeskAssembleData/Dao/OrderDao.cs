@@ -260,6 +260,26 @@ namespace DeskAssembleData
                 return orders;
             }
         }
+
+        public List<OrderModel> orderModels()
+        {
+            using (DeskAssemblyEntities context = DbContextCreator.Create())
+            {
+                var query = from x in context.Orders
+                            where x.IsSale == true
+                            group x by x.Date.Month into g
+                            select g;
+
+                List<OrderModel> models = new List<OrderModel>();
+
+                foreach (var @group in query)
+                {
+                    OrderModel model = new OrderModel(group.Key, group.Sum(x => x.Quantity));
+                    models.Add(model);
+                }
+                return models;
+            }
+        }
     }
 
 
