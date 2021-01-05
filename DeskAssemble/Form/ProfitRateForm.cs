@@ -20,12 +20,6 @@ namespace DeskAssemble
             InitializeComponent();
         }
 
-        //private void ProfitRateForm_Load(object sender, EventArgs e)
-        //{
-        //    List<Order> list = Dao.Order.Search2();
-        //    orderBindingSource.DataSource = list;
-        //}
-
         private void ProfitRateForm_Load(object sender, EventArgs e)
         {
             List<OrderModel> list = Dao.Order.orderModels();
