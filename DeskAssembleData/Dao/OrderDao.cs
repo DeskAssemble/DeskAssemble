@@ -98,35 +98,35 @@ namespace DeskAssembleData
         }
 
         public List<Salemodel2> GetSaleModels()
+        {
             {
+                using (var context = DbContextCreator.Create())
                 {
-                    using (var context = DbContextCreator.Create())
+                    var ProductNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
+
+                    var query = from i in context.Items
+                                join o in context.Orders on i.ItemId equals o.ItemId
+                                where o.IsSale == true && i.IsProduct == true
+                                select new { Quantities = i.Orders.Sum(s => s.Quantity), ItemId = o.ItemId };
+
+                    var query2 = from x in query
+                                 group x by x.ItemId into g
+                                 select g;
+
+                    var Salemodels = new List<Salemodel2>();
+                    foreach (var group in query2)
                     {
-                        var ProductNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
+                        Salemodel2 smodel = new Salemodel2();
+                        smodel.ItemId = group.Key;
+                        smodel.Quantity = group.Sum(g => g.Quantities);
+                        smodel.ProductName = ProductNames[group.Key];
 
-                        var query = from i in context.Items
-                                    join o in context.Orders on i.ItemId equals o.ItemId
-                                    where o.IsSale == true && i.IsProduct == true
-                                    select new { Quantities = i.Orders.Sum(s => s.Quantity), ItemId = o.ItemId };
-
-                        var query2 = from x in query
-                                     group x by x.ItemId into g
-                                     select g;
-
-                        var Salemodels = new List<Salemodel2>();
-                        foreach (var group in query2)
-                        {
-                            Salemodel2 smodel = new Salemodel2();
-                            smodel.ItemId = group.Key;
-                            smodel.Quantity = group.Sum(g => g.Quantities);
-                            smodel.ProductName = ProductNames[group.Key];
-
-                            Salemodels.Add(smodel);
-                        }
-
-                        return Salemodels;
+                        Salemodels.Add(smodel);
                     }
+
+                    return Salemodels;
                 }
+            }
         }
 
         //국가별 부품 구매량 모델
@@ -135,9 +135,9 @@ namespace DeskAssembleData
             using (var context = DbContextCreator.Create())
             {
                 var countries = context.Countries.ToList();
-                
+
                 List<MapChartModel> models = new List<MapChartModel>();
-                
+
                 foreach (Country country in countries)
                 {
                     var query = from x in context.Orders
@@ -156,7 +156,7 @@ namespace DeskAssembleData
 
                     models.Add(model);
                 }
-                    return models;
+                return models;
             }
         }
 
@@ -216,7 +216,7 @@ namespace DeskAssembleData
                             };
 
                 var list = query.ToList();
-                foreach(var item in list)
+                foreach (var item in list)
                 {
                     item.Order.ItemName = item.ItemName;
                     item.Order.TeamName = item.TeamName;
@@ -230,24 +230,37 @@ namespace DeskAssembleData
             }
         }
 
-        public List<OrderModel> orderModels()
+        public List<Order> Pivot()
         {
-            using(DeskAssemblyEntities context = DbContextCreator.Create())
+            using (DeskAssemblyEntities context = DbContextCreator.Create())
             {
                 var query = from x in context.Orders
-                            where x.IsSale == true
-                            group x by x.Date.Month into g
-                            select g;
+                            select new
+                            {
+                                Order = x,
+                                ItemName = x.Item.Name,
+                                ContractName = x.Contract.Name,
+                                CountryName = x.Contract.Country.Name,
+                                ItemPrice = x.Item.Price
+                            };
 
-                List<OrderModel> models = new List<OrderModel>();
+                var list = query.ToList();
+                List<Order> orders = new List<Order>();
 
-                foreach(var @group in query)
+                foreach(var x in list)
                 {
-                    OrderModel model = new OrderModel(group.Key, group.Sum(x => x.Quantity));
-                    models.Add(model);
+                    x.Order.ItemName = x.ItemName;
+                    x.Order.ContractName = x.ContractName;
+                    x.Order.CountryName = x.CountryName;
+                    x.Order.ItemPrice = x.ItemPrice;
+
+                    orders.Add(x.Order);
                 }
-                return models;
+
+                return orders;
             }
         }
     }
+
+
 }
