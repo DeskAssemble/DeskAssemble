@@ -43,8 +43,10 @@ namespace DeskAssemble
             // chartControl1
             // 
             this.chartControl1.DataSource = this.salemodel2BindingSource;
-            this.chartControl1.Location = new System.Drawing.Point(12, 12);
+            this.chartControl1.Location = new System.Drawing.Point(14, 12);
             this.chartControl1.Name = "chartControl1";
+            this.chartControl1.SelectionMode = DevExpress.XtraCharts.ElementSelectionMode.Single;
+            this.chartControl1.SeriesSelectionMode = DevExpress.XtraCharts.SeriesSelectionMode.Point;
             series1.ArgumentDataMember = "ItemId";
             series1.Name = "Series 1";
             series1.ValueDataMembersSerializable = "Quantity";
@@ -53,6 +55,7 @@ namespace DeskAssemble
         series1};
             this.chartControl1.Size = new System.Drawing.Size(896, 669);
             this.chartControl1.TabIndex = 0;
+            this.chartControl1.SelectedItemsChanged += new DevExpress.XtraCharts.SelectedItemsChangedEventHandler(this.chartControl1_SelectedItemsChanged);
             // 
             // salemodel2BindingSource
             // 

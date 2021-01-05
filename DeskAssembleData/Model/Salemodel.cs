@@ -27,4 +27,15 @@ namespace DeskAssembleData.Data
         public int Quantity { get; set; }
 
     }
+
+    public class ProductsaledetailModel
+    {
+        public int ContractId { get; set; }
+
+        public string VendeeName { get; set; }
+
+        public int Quantity { get; set; }
+        
+        public int ItemId { get; set; }
+    }
 }

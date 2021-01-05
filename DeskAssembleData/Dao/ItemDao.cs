@@ -12,38 +12,83 @@ namespace DeskAssembleData
     public class ItemDao : SingleKeyDao<Item, int>
     {
         protected override Expression<Func<Item, int>> KeySelector => throw new NotImplementedException();
-        //public List<Salemodel2> GetModels()
-        //{
-        //    {
-        //        using (var context = DbContextCreator.Create())
-        //        {
-        //            var ProductNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
 
-        //            var query = from i in context.Items
-        //                        join o in context.Orders on i.ItemId equals o.ItemId
-        //                        where o.IsSale == true && i.IsProduct == true
-        //                        select new { Quantities = i.Orders.Sum(s => s.Quantity), ItemId = o.ItemId };
+        public List<Item> GetItemsByCategoryId(int categoryId)
+        {
+            using (var context = DbContextCreator.Create())
+            {
+                var query = from x in context.Items
+                            where x.CategoryId == categoryId
+                            orderby x.CategoryId
+                            select x;
 
-        //            var query2 = from x in query
-        //                         group x by x.ItemId into g
-        //                         select g;
+                return query.ToList();
+            }
+        }
+        public List<PurcahsePlatemodel> GetPurchasePlateModels()
+        {
+            {
+                using (var context = DbContextCreator.Create())
+                {
 
-        //            var Salemodels = new List<Salemodel2>();
-        //            foreach (var group in query2)
-        //            {
-        //                Salemodel2 smodel = new Salemodel2();
-        //                smodel.ItemId = group.Key;
-        //                smodel.Quantity = group.Sum(g => g.Quantities);
-        //                smodel.ProductName = ProductNames[group.Key];
+                    var items = context.Items.ToList();
 
-        //                Salemodels.Add(smodel);
-        //            }
+                    List<PurcahsePlatemodel> models = new List<PurcahsePlatemodel>();
 
-        //            return Salemodels;
-        //        }
-        //    }
+                    foreach (Item item in items)
+                    {
+                        var query = from o in context.Orders
+                                    where o.ItemId == item.ItemId && o.IsSale == false && o.Item.IsProduct == false
+                                    select o.Quantity;
+
+                        var list = query.ToList();
+
+                        PurcahsePlatemodel model = new PurcahsePlatemodel();
+
+                        model.Quantity = list.Sum();
+                        model.ItemId = item.ItemId;
+                        model.PartName = item.Name;
 
 
-        //}
+                        models.Add(model);
+                    }
+                    return models;
+                }
+               
+            }
+
+        }
+        public List<ProductsaledetailModel> GetProductsaledetailModels()
+        {
+            using (var context = DbContextCreator.Create())
+            {
+
+                var contracts = context.Contracts.ToList();
+
+                List<ProductsaledetailModel> smodels = new List<ProductsaledetailModel>();
+
+                foreach (Contract contract in contracts)
+                {
+                    var query = from o in context.Orders
+                                where o.ContractId == contract.ContractId && o.IsSale == true && o.Item.IsProduct == true
+                                 && o.Contract.IsVendee == true && o.ItemId == o.Item.ItemId
+                                select o.Quantity;
+
+                    var list = query.ToList();
+
+                    ProductsaledetailModel smodel = new ProductsaledetailModel();
+
+                    smodel.Quantity = list.Sum();
+                    smodel.ContractId = contract.ContractId;
+                    smodel.VendeeName = contract.Name;
+
+
+                    smodels.Add(smodel);
+                }
+                return smodels;
+            }
+
+        }
+
     }
 }

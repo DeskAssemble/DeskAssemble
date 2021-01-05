@@ -27,4 +27,12 @@ namespace DeskAssembleData.Data
         public int Quantity { get; set; }
 
     }
+    public class PurcahsePlatemodel
+    {
+        public int ItemId { get; set; }
+
+        public string PartName { get; set; }
+
+        public int Quantity { get; set; }
+    }
 }

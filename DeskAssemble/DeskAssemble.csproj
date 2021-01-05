@@ -9,12 +9,13 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>DeskAssemble</RootNamespace>
     <AssemblyName>DeskAssemble</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -246,8 +247,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DeskAssembleData.Data.ProductsaledetailModel.datasource" />
+    <None Include="Properties\DataSources\DeskAssembleData.Data.PurcahsePlatemodel.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Data.Purchasemodel2.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Data.Salemodel2.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Item.datasource" />

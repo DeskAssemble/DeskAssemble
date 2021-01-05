@@ -29,24 +29,34 @@ namespace DeskAssemble
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.PieSeriesView pieSeriesView1 = new DevExpress.XtraCharts.PieSeriesView();
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
+            this.purcahsePlatemodelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purcahsePlatemodelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // chartControl1
             // 
+            this.chartControl1.DataSource = this.purcahsePlatemodelBindingSource;
             this.chartControl1.Location = new System.Drawing.Point(25, 24);
             this.chartControl1.Name = "chartControl1";
+            series1.ArgumentDataMember = "ItemId";
             series1.Name = "Series 1";
+            series1.ValueDataMembersSerializable = "Quantity";
             series1.View = pieSeriesView1;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
             this.chartControl1.Size = new System.Drawing.Size(676, 595);
             this.chartControl1.TabIndex = 0;
+            // 
+            // purcahsePlatemodelBindingSource
+            // 
+            this.purcahsePlatemodelBindingSource.DataSource = typeof(DeskAssembleData.Data.PurcahsePlatemodel);
             // 
             // PurchasedPartDetailForm
             // 
@@ -60,6 +70,7 @@ namespace DeskAssemble
             ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purcahsePlatemodelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -67,5 +78,6 @@ namespace DeskAssemble
         #endregion
 
         private DevExpress.XtraCharts.ChartControl chartControl1;
+        private System.Windows.Forms.BindingSource purcahsePlatemodelBindingSource;
     }
 }

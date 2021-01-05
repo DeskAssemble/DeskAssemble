@@ -1,4 +1,5 @@
-﻿using DeskAssembleData.Data;
+﻿using DeskAssembleData.Dao;
+using DeskAssembleData.Data;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -25,5 +26,12 @@ namespace DeskAssemble
         public PurchasedPartForm QuantityForm { get; }
 
         public Purchasemodel2 Model { get; }
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            List<DeskAssembleData.Item> items = Dao.Item.GetItemsByCategoryId(Model.CategoryId);
+            purcahsePlatemodelBindingSource.DataSource = Dao.Item.GetPurchasePlateModels();
+        }
     }
 }
