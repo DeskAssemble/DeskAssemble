@@ -260,6 +260,7 @@
     <None Include="Properties\DataSources\DeskAssembleData.Model.PivotModel.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Movement.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Order.datasource" />
+    <None Include="Properties\DataSources\DeskAssembleData.OrderModel.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.OrderDao.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.SalesPerformanceModel.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.WareHouse.datasource" />
