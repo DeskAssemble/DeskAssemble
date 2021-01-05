@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="Model\MapChartDetailModel.cs" />
     <Compile Include="Model\MapChartModel.cs" />
+    <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Model\Purchasemodel.cs" />
     <Compile Include="Model\Salemodel.cs" />
     <Compile Include="Model\SalesPerformanceModel.cs" />
