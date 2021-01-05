@@ -28,11 +28,11 @@ namespace DeskAssembleData
         public virtual DbSet<Capture> Captures { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
-        public virtual DbSet<Expense> Expenses { get; set; }
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<Movement> Movements { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<WareHouse> WareHouses { get; set; }
+        public virtual DbSet<Expense> Expenses { get; set; }
     }
 }

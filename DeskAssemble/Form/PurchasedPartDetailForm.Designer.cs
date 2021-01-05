@@ -43,7 +43,9 @@ namespace DeskAssemble
             // chartControl1
             // 
             this.chartControl1.DataSource = this.purcahsePlatemodelBindingSource;
-            this.chartControl1.Location = new System.Drawing.Point(25, 24);
+            this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartControl1.Location = new System.Drawing.Point(0, 0);
+            this.chartControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartControl1.Name = "chartControl1";
             series1.ArgumentDataMember = "ItemId";
             series1.Name = "Series 1";
@@ -51,7 +53,7 @@ namespace DeskAssemble
             series1.View = pieSeriesView1;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
-            this.chartControl1.Size = new System.Drawing.Size(676, 595);
+            this.chartControl1.Size = new System.Drawing.Size(698, 516);
             this.chartControl1.TabIndex = 0;
             // 
             // purcahsePlatemodelBindingSource
@@ -60,11 +62,10 @@ namespace DeskAssemble
             // 
             // PurchasedPartDetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(798, 663);
+            this.ClientSize = new System.Drawing.Size(698, 516);
             this.Controls.Add(this.chartControl1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "PurchasedPartDetailForm";
             this.Text = "부품 구매량 상세";
             ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).EndInit();

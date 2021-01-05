@@ -281,6 +281,4 @@ namespace DeskAssembleData
             }
         }
     }
-
-
 }

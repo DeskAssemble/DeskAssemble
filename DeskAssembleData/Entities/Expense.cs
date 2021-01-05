@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace DeskAssembleData
 {
-    public partial class Order
+    public partial class Expense
     {
-        public string ItemName { get; set; }
-        public string TeamName { get; set; }
-        public string ContractName { get; set; }
-        public string IsSaleName { get; set; }
-        public string CountryName { get; set; }
+        //public int PersonnelExpense { get; set; }
+        //public int ShippingExpense { get; set; }
+        //public int MaintenanceExpense { get; set; }
+        //public int PurchaseExpense { get; set; }
+
+        public int Asdsdsdsd { get; set; }
         public int ItemPrice { get; set; }
+        public int TotalCost { get; set; }
         public int QuantityPrice
         {
             get
@@ -21,12 +23,15 @@ namespace DeskAssembleData
                 return Quantity * ItemPrice;
             }
         }
+
         public string YearQuarter
         {
             get
             {
                 int month = Date.Month;
+
                 int quarter = 0;
+
                 if (month >= 1 && month <= 3)
                     quarter = 1;
                 else if (month >= 4 && month <= 6)

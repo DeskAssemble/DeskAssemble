@@ -1,14 +1,13 @@
-﻿using DeskAssembleData.EFLibrary;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeskAssembleData.Dao
+namespace DeskAssembleData
 {
-    public class ExpenseDao
+    public partial class Item
     {
-      
+        public int QuantitySum { get; set; }
     }
 }

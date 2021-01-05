@@ -19,12 +19,33 @@ namespace DeskAssembleData
             {
                 var query = from x in context.Items
                             where x.CategoryId == categoryId
-                            orderby x.CategoryId
+                            //orderby x.CategoryId
                             select x;
 
-                return query.ToList();
+                var items = query.ToList();
+
+                foreach (Item item in items)
+                {
+                    item.QuantitySum = GetQuantitySum(item.ItemId);
+                }
+
+                return items;
             }
         }
+
+        int GetQuantitySum(int itemId)
+        {
+            using (var context = DbContextCreator.Create())
+            {
+                var query = from x in context.Orders
+                            where x.ItemId == itemId
+                            select x.Quantity;
+
+                return query.ToList().Sum();
+            }
+
+        }
+
         public List<PurcahsePlatemodel> GetPurchasePlateModels()
         {
             {
@@ -89,6 +110,7 @@ namespace DeskAssembleData
             }
 
         }
+
 
     }
 }
