@@ -252,10 +252,12 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DeskAssembleData.Dao.ExpenseDao.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Data.ProductsaledetailModel.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Data.PurcahsePlatemodel.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Data.Purchasemodel2.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Data.Salemodel2.datasource" />
+    <None Include="Properties\DataSources\DeskAssembleData.ExpenseModel.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Item.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Model.MapChartDetailModel.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Model.MapChartModel.datasource" />

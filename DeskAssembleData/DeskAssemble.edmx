@@ -34,7 +34,7 @@
           <Key>
             <PropertyRef Name="ExpenseId" />
           </Key>
-          <Property Name="ExpenseId" Type="int" Nullable="false" />
+          <Property Name="ExpenseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Cost" Type="int" Nullable="false" />
@@ -238,7 +238,6 @@
           <EntitySet Name="Captures" EntityType="DeskAssemblyModel.Capture" />
           <EntitySet Name="Contracts" EntityType="DeskAssemblyModel.Contract" />
           <EntitySet Name="Countries" EntityType="DeskAssemblyModel.Country" />
-          <EntitySet Name="Expenses" EntityType="DeskAssemblyModel.Expense" />
           <EntitySet Name="Items" EntityType="DeskAssemblyModel.Item" />
           <EntitySet Name="Movements" EntityType="DeskAssemblyModel.Movement" />
           <EntitySet Name="Orders" EntityType="DeskAssemblyModel.Order" />
@@ -276,6 +275,7 @@
             <End Role="Team" EntitySet="Teams" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
+          <EntitySet Name="Expenses" EntityType="DeskAssemblyModel.Expense" />
         </EntityContainer>
         <EntityType Name="Capture">
           <Key>
@@ -305,15 +305,6 @@
           <Property Name="Latitude" Type="Double" Nullable="false" />
           <Property Name="Longitude" Type="Double" Nullable="false" />
           <NavigationProperty Name="Contracts" Relationship="DeskAssemblyModel.FK_Contract_Country" FromRole="Country" ToRole="Contract" />
-        </EntityType>
-        <EntityType Name="Expense">
-          <Key>
-            <PropertyRef Name="ExpenseId" />
-          </Key>
-          <Property Name="ExpenseId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Cost" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -475,6 +466,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Expense">
+          <Key>
+            <PropertyRef Name="ExpenseId" />
+          </Key>
+          <Property Name="ExpenseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cost" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -506,16 +506,6 @@
                 <ScalarProperty Name="Latitude" ColumnName="Latitude" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Expenses">
-            <EntityTypeMapping TypeName="DeskAssemblyModel.Expense">
-              <MappingFragment StoreEntitySet="Expense">
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -573,6 +563,16 @@
                 <ScalarProperty Name="Areasize" ColumnName="Areasize" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="WarehouseId" ColumnName="WarehouseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expenses">
+            <EntityTypeMapping TypeName="DeskAssemblyModel.Expense">
+              <MappingFragment StoreEntitySet="Expense">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
