@@ -23,7 +23,6 @@ namespace DeskAssembleData
                             group x by x.TeamId into g
                             select g;
 
-                // 달성건수 추가
                 List<SalesPerformanceModel> saleModels = new List<SalesPerformanceModel>();
                 foreach (var g in query)
                 {
@@ -36,7 +35,6 @@ namespace DeskAssembleData
                 }
 
 
-                // 목표건수 추가
                 List<SalesPerformanceModel> targetModels = new List<SalesPerformanceModel>();
                 foreach (var saleModel in saleModels)
                 {

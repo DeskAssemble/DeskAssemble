@@ -45,9 +45,17 @@ namespace DeskAssemble
             // chartControl1
             // 
             this.chartControl1.DataSource = this.orderModelBindingSource;
+            xyDiagram1.AxisX.NumericScaleOptions.AutoGrid = false;
+            xyDiagram1.AxisX.Tag = "";
+            xyDiagram1.AxisX.Title.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            xyDiagram1.AxisX.Title.Text = "기간(월)";
+            xyDiagram1.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
             xyDiagram1.AxisX.WholeRange.EndSideMargin = 0D;
             xyDiagram1.AxisX.WholeRange.StartSideMargin = 0D;
+            xyDiagram1.AxisY.Title.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            xyDiagram1.AxisY.Title.Text = "증감률(%)";
+            xyDiagram1.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
             this.chartControl1.Diagram = xyDiagram1;
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -55,13 +63,14 @@ namespace DeskAssemble
             this.chartControl1.Location = new System.Drawing.Point(0, 0);
             this.chartControl1.Name = "chartControl1";
             series1.ArgumentDataMember = "Month";
+            series1.LegendTextPattern = "{A}";
             series1.Name = "Series 1";
-            series1.ValueDataMembersSerializable = "Quantity";
+            series1.ValueDataMembersSerializable = "ProfitRate";
             areaSeriesView1.Transparency = ((byte)(0));
             series1.View = areaSeriesView1;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
-            this.chartControl1.Size = new System.Drawing.Size(628, 581);
+            this.chartControl1.Size = new System.Drawing.Size(714, 581);
             this.chartControl1.TabIndex = 0;
             // 
             // orderModelBindingSource
@@ -72,7 +81,7 @@ namespace DeskAssemble
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 581);
+            this.ClientSize = new System.Drawing.Size(714, 581);
             this.Controls.Add(this.chartControl1);
             this.Name = "ProfitRateForm";
             this.Text = "전월 대비 수익 증감률";

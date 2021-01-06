@@ -261,26 +261,41 @@ namespace DeskAssembleData
             }
         }
 
-        public List<OrderModel> orderModels()
+        public List<OrderModel> OrderModels()
         {
             using (DeskAssemblyEntities context = DbContextCreator.Create())
             {
-                var query = from x in context.Orders
-                            where x.IsSale == true
-                            group x by x.Date.Month into g
-                            select g;
+                var query = from p in context.Orders
+                            where p.IsSale == true
+                            select new
+                            {
+                                Order = p,
+                                Price = p.Item.Price,
+                                Quantity = p.Quantity,
+                                Month = p.Date.Month,
+                                QuantityPrice = p.Quantity * p.Item.Price,
+                            };
+
+                var query2 = from x in query
+                             group x by x.Month into g
+                             select g;
 
                 List<OrderModel> models = new List<OrderModel>();
 
-                foreach (var @group in query)
+                foreach (var @group in query2)
                 {
-                    OrderModel model = new OrderModel(group.Key, group.Sum(x => x.Quantity));
+                    OrderModel model = new OrderModel();
+                    model.Month = group.Key;
+                    model.QuantityPrice = group.Sum(g => g.QuantityPrice);
+                    if (model.Month != 9)
+                    {
+                        model.ProfitRate = (((model.QuantityPrice - models[models.Count-1].QuantityPrice) * 1.0) / models[models.Count-1].QuantityPrice) * 100;
+                    }
                     models.Add(model);
                 }
+
                 return models;
             }
         }
     }
-
-
 }

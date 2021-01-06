@@ -22,7 +22,7 @@ namespace DeskAssemble
 
         private void ProfitRateForm_Load(object sender, EventArgs e)
         {
-            List<OrderModel> list = Dao.Order.orderModels();
+            List<OrderModel> list = Dao.Order.OrderModels();
             orderModelBindingSource.DataSource = list;
         }
     }

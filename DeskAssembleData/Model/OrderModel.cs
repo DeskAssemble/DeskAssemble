@@ -8,14 +8,11 @@ namespace DeskAssembleData
 {
     public class OrderModel
     {
-        public OrderModel(int month, int quantity)
-        {
-            Month = month;
-            Quantity = quantity;
-        }
-
+        public int Price { get; set; }
         public int ItemId { get; set; }
         public int Quantity { get; set; }
         public int Month { get; set; }
+        public int QuantityPrice { get; set; }
+        public double ProfitRate { get; set; }
     }
 }
