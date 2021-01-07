@@ -30,8 +30,8 @@ namespace DeskAssemble
         {
             base.OnLoad(e);
 
-            List<DeskAssembleData.Item> items = Dao.Item.GetItemsByCategoryId(Model.CategoryId);
-            purcahsePlatemodelBindingSource.DataSource = Dao.Item.GetPurchasePlateModels();
+            //List<DeskAssembleData.Item> items = Dao.Item.GetItemsByCategoryId(Model.CategoryId);
+            purcahselistmodelBindingSource.DataSource = Dao.Item.GetItemsByCategoryId(Model.CategoryId);
         }
     }
 }

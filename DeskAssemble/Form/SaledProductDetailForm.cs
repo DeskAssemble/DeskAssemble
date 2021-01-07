@@ -31,7 +31,7 @@ namespace DeskAssemble
         {
             base.OnLoad(e);
 
-            List<DeskAssembleData.Item> items = Dao.Item.GetItemsByCategoryId(SModel.ItemId);
+            //List<DeskAssembleData.Item> items = Dao.Item.GetItemsByCategoryId(SModel.ItemId);
             productsaledetailModelBindingSource.DataSource = Dao.Item.GetProductsaledetailModels();
         }
     }

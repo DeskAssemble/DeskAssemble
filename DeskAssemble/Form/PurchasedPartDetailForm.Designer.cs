@@ -33,19 +33,18 @@ namespace DeskAssemble
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.PieSeriesView pieSeriesView1 = new DevExpress.XtraCharts.PieSeriesView();
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
-            this.purcahsePlatemodelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.purcahselistmodelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.purcahsePlatemodelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purcahselistmodelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // chartControl1
             // 
-            this.chartControl1.DataSource = this.purcahsePlatemodelBindingSource;
+            this.chartControl1.DataSource = this.purcahselistmodelBindingSource;
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartControl1.Location = new System.Drawing.Point(0, 0);
-            this.chartControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartControl1.Name = "chartControl1";
             series1.ArgumentDataMember = "ItemId";
             series1.Name = "Series 1";
@@ -53,25 +52,26 @@ namespace DeskAssemble
             series1.View = pieSeriesView1;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
-            this.chartControl1.Size = new System.Drawing.Size(698, 516);
+            this.chartControl1.Size = new System.Drawing.Size(798, 663);
             this.chartControl1.TabIndex = 0;
             // 
-            // purcahsePlatemodelBindingSource
+            // purcahselistmodelBindingSource
             // 
-            this.purcahsePlatemodelBindingSource.DataSource = typeof(DeskAssembleData.Data.PurcahsePlatemodel);
+            this.purcahselistmodelBindingSource.DataSource = typeof(DeskAssembleData.Data.Purcahselistmodel);
             // 
             // PurchasedPartDetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(698, 516);
+            this.ClientSize = new System.Drawing.Size(798, 663);
             this.Controls.Add(this.chartControl1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "PurchasedPartDetailForm";
             this.Text = "부품 구매량 상세";
             ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.purcahsePlatemodelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purcahselistmodelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -79,6 +79,6 @@ namespace DeskAssemble
         #endregion
 
         private DevExpress.XtraCharts.ChartControl chartControl1;
-        private System.Windows.Forms.BindingSource purcahsePlatemodelBindingSource;
+        private System.Windows.Forms.BindingSource purcahselistmodelBindingSource;
     }
 }
