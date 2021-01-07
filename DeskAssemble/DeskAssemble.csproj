@@ -254,6 +254,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DeskAssembleData.Dao.ExpenseDao.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Data.ProductsaledetailModel.datasource" />
+    <None Include="Properties\DataSources\DeskAssembleData.Data.Purcahselistmodel.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Data.PurcahsePlatemodel.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Data.Purchasemodel2.datasource" />
     <None Include="Properties\DataSources\DeskAssembleData.Data.Salemodel2.datasource" />

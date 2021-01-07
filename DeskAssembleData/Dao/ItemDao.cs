@@ -13,10 +13,12 @@ namespace DeskAssembleData
     {
         protected override Expression<Func<Item, int>> KeySelector => throw new NotImplementedException();
 
-        public List<Item> GetItemsByCategoryId(int categoryId)
+        public List<Purcahselistmodel> GetItemsByCategoryId(int categoryId)
         {
             using (var context = DbContextCreator.Create())
             {
+                List<Purcahselistmodel> models = new List<Purcahselistmodel>();
+
                 var query = from x in context.Items
                             where x.CategoryId == categoryId
                             //orderby x.CategoryId
@@ -26,12 +28,21 @@ namespace DeskAssembleData
 
                 foreach (Item item in items)
                 {
+                    Purcahselistmodel model = new Purcahselistmodel();
+
                     item.QuantitySum = GetQuantitySum(item.ItemId);
+
+                    model.Quantity = item.QuantitySum;
+                    model.ItemId = item.ItemId;
+                    model.PartName = item.Name;
+
+                    models.Add(model);
                 }
 
-                return items;
+                return models;
             }
         }
+
 
         int GetQuantitySum(int itemId)
         {
@@ -46,39 +57,7 @@ namespace DeskAssembleData
 
         }
 
-        public List<PurcahsePlatemodel> GetPurchasePlateModels()
-        {
-            {
-                using (var context = DbContextCreator.Create())
-                {
-
-                    var items = context.Items.ToList();
-
-                    List<PurcahsePlatemodel> models = new List<PurcahsePlatemodel>();
-
-                    foreach (Item item in items)
-                    {
-                        var query = from o in context.Orders
-                                    where o.ItemId == item.ItemId && o.IsSale == false && o.Item.IsProduct == false
-                                    select o.Quantity;
-
-                        var list = query.ToList();
-
-                        PurcahsePlatemodel model = new PurcahsePlatemodel();
-
-                        model.Quantity = list.Sum();
-                        model.ItemId = item.ItemId;
-                        model.PartName = item.Name;
-
-
-                        models.Add(model);
-                    }
-                    return models;
-                }
-               
-            }
-
-        }
+        
         public List<ProductsaledetailModel> GetProductsaledetailModels()
         {
             using (var context = DbContextCreator.Create())
