@@ -21,7 +21,7 @@
         <AssociationConnector Association="DeskAssemblyModel.FK_Order_Item" />
         <AssociationConnector Association="DeskAssemblyModel.FK_Movement_WareHouse" />
         <AssociationConnector Association="DeskAssemblyModel.FK_Order_Team" />
-        <EntityTypeShape EntityType="DeskAssemblyModel.Expense" Width="1.5" PointX="7.875" PointY="4" />
+        <EntityTypeShape EntityType="DeskAssemblyModel.Expense" Width="1.5" PointX="8.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

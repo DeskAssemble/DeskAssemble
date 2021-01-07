@@ -93,7 +93,6 @@
     <Compile Include="EFLibrary\BaseDao.cs" />
     <Compile Include="EFLibrary\DbContextCreator.cs" />
     <Compile Include="EFLibrary\SingleKeyDao.cs" />
-    <Compile Include="Entities\Expense.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\Movement.cs" />
     <Compile Include="Entities\Order.cs" />
