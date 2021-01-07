@@ -23,7 +23,7 @@ namespace DeskAssemble
         {
             base.OnLoad(e);
 
-            //expenseDaoBindingSource.DataSource = Dao.Expense.ExpenseLine();
+            expenseBindingSource.DataSource = Dao.Expense.GetExpenses();
         }
     }
 }

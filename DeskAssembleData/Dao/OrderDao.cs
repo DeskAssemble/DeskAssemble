@@ -236,6 +236,7 @@ namespace DeskAssembleData
                             };
 
                 var list = query.ToList();
+
                 List<Order> orders = new List<Order>();
 
                 foreach(var x in list)
