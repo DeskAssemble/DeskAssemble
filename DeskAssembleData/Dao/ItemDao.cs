@@ -63,7 +63,7 @@ namespace DeskAssembleData
 
 
                 var query = from x in context.Orders
-                            where x.ItemId == ItemId && x.IsSale == true && x.Contract.IsVendee == true
+                            where x.ItemId == ItemId //&& x.IsSale == true && x.Contract.IsVendee == true
                             select x;
 
                 var items = query.ToList();
@@ -72,7 +72,7 @@ namespace DeskAssembleData
                 {
                     ProductsaledetailModel smodel = new ProductsaledetailModel();
 
-                    item.SaleQuantitySum = GetSaleQuantitySum(item.ItemId);
+                    item.SaleQuantitySum = GetSaleQuantitySum(item.ContractId);
 
 
 
@@ -95,6 +95,7 @@ namespace DeskAssembleData
                 var query = from x in context.Orders
                             where x.ContractId == contractId
                             select x.Quantity;
+
 
                 return query.ToList().Sum();
             }
