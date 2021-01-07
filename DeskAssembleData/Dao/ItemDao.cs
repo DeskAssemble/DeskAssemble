@@ -21,7 +21,6 @@ namespace DeskAssembleData
 
                 var query = from x in context.Items
                             where x.CategoryId == categoryId
-                            //orderby x.CategoryId
                             select x;
 
                 var items = query.ToList();
@@ -42,8 +41,6 @@ namespace DeskAssembleData
                 return models;
             }
         }
-
-
         int GetQuantitySum(int itemId)
         {
             using (var context = DbContextCreator.Create())
@@ -57,30 +54,31 @@ namespace DeskAssembleData
 
         }
 
-        
-        public List<ProductsaledetailModel> GetProductsaledetailModels()
+        public List<ProductsaledetailModel> GetContractorByItemId(int ItemId)
         {
             using (var context = DbContextCreator.Create())
             {
-
-                var contracts = context.Contracts.ToList();
-
                 List<ProductsaledetailModel> smodels = new List<ProductsaledetailModel>();
 
-                foreach (Contract contract in contracts)
+
+
+                var query = from x in context.Orders
+                            where x.ItemId == ItemId && x.IsSale == true && x.Contract.IsVendee == true
+                            select x;
+
+                var items = query.ToList();
+
+                foreach (Order item in items)
                 {
-                    var query = from o in context.Orders
-                                where o.ContractId == contract.ContractId && o.IsSale == true && o.Item.IsProduct == true
-                                 && o.Contract.IsVendee == true && o.ItemId == o.Item.ItemId
-                                select o.Quantity;
-
-                    var list = query.ToList();
-
                     ProductsaledetailModel smodel = new ProductsaledetailModel();
 
-                    smodel.Quantity = list.Sum();
-                    smodel.ContractId = contract.ContractId;
-                    smodel.VendeeName = contract.Name;
+                    item.SaleQuantitySum = GetSaleQuantitySum(item.ItemId);
+
+
+
+                    smodel.Quantity = item.SaleQuantitySum;
+                    smodel.ContractId = item.ContractId;
+                    //smodel.VendeeName = item.Contract.Name;
 
 
                     smodels.Add(smodel);
@@ -88,7 +86,54 @@ namespace DeskAssembleData
                 return smodels;
             }
 
+
         }
+        int GetSaleQuantitySum(int contractId)
+        {
+            using (var context = DbContextCreator.Create())
+            {
+                var query = from x in context.Orders
+                            where x.ContractId == contractId
+                            select x.Quantity;
+
+                return query.ToList().Sum();
+            }
+
+        }
+
+
+
+        //public List<ProductsaledetailModel> GetProductsaledetailModels()
+        //{
+        //    using (var context = DbContextCreator.Create())
+        //    {
+
+        //        var contracts = context.Contracts.ToList();
+
+        //        List<ProductsaledetailModel> smodels = new List<ProductsaledetailModel>();
+
+        //        foreach (Contract contract in contracts)
+        //        {
+        //            var query = from o in context.Orders
+        //                        where o.ContractId == contract.ContractId && o.IsSale == true && o.Item.IsProduct == true
+        //                         && o.Contract.IsVendee == true && o.ItemId == o.Item.ItemId
+        //                        select o.Quantity;
+
+        //            var list = query.ToList();
+
+        //            ProductsaledetailModel smodel = new ProductsaledetailModel();
+
+        //            smodel.Quantity = list.Sum();
+        //            smodel.ContractId = contract.ContractId;
+        //            smodel.VendeeName = contract.Name;
+
+
+        //            smodels.Add(smodel);
+        //        }
+        //        return smodels;
+        //    }
+
+        //}
 
 
     }

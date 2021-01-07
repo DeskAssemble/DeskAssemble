@@ -102,29 +102,20 @@ namespace DeskAssembleData
             {
                 using (var context = DbContextCreator.Create())
                 {
-                    var ProductNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
+                    List<Item> items = context.Items.ToList();
 
                     var query = from i in context.Items
                                 join o in context.Orders on i.ItemId equals o.ItemId
-                                where o.IsSale == true && i.IsProduct == true
-                                select new { Quantities = i.Orders.Sum(s => s.Quantity), ItemId = o.ItemId };
+                                join c in context.Contracts on o.ContractId equals c.ContractId
+                                where i.IsProduct == true// && c.IsVendee == true  && o.IsSale == true
+                                select new { ItemId = i.ItemId, ContractId = c.ContractId, Quantity = o.Quantity, ProductName = i.Name };
 
-                    var query2 = from x in query
-                                 group x by x.ItemId into g
-                                 select g;
 
-                    var Salemodels = new List<Salemodel2>();
-                    foreach (var group in query2)
-                    {
-                        Salemodel2 smodel = new Salemodel2();
-                        smodel.ItemId = group.Key;
-                        smodel.Quantity = group.Sum(g => g.Quantities);
-                        smodel.ProductName = ProductNames[group.Key];
+                    var query1 = query.GroupBy(x => x.ItemId, x => x.Quantity,
+                        (key, info) => new Salemodel2 { ItemId = key, Quantity = info.Sum()});
 
-                        Salemodels.Add(smodel);
-                    }
-
-                    return Salemodels;
+                    return query1.ToList();
+                    
                 }
             }
         }

@@ -16,7 +16,7 @@ namespace DeskAssembleData
     {
         public int MovementId { get; set; }
         public int ItemId { get; set; }
-        public int ContractId { get; set; }
+        public Nullable<int> ContractId { get; set; }
         public System.DateTime Datetime { get; set; }
         public bool IsIn { get; set; }
         public int WareHouseId { get; set; }

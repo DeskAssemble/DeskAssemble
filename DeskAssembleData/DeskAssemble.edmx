@@ -57,7 +57,7 @@
           </Key>
           <Property Name="MovementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ItemId" Type="int" Nullable="false" />
-          <Property Name="ContractId" Type="int" Nullable="false" />
+          <Property Name="ContractId" Type="int" />
           <Property Name="Datetime" Type="datetime" Nullable="false" />
           <Property Name="IsIn" Type="bit" Nullable="false" />
           <Property Name="WareHouseId" Type="int" Nullable="false" />
@@ -116,7 +116,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Movement_Contract">
-          <End Role="Contract" Type="Self.Contract" Multiplicity="1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="0..1" />
           <End Role="Movement" Type="Self.Movement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Contract">
@@ -337,7 +337,7 @@
           </Key>
           <Property Name="MovementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ItemId" Type="Int32" Nullable="false" />
-          <Property Name="ContractId" Type="Int32" Nullable="false" />
+          <Property Name="ContractId" Type="Int32" />
           <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsIn" Type="Boolean" Nullable="false" />
           <Property Name="WareHouseId" Type="Int32" Nullable="false" />
@@ -392,7 +392,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Movement_Contract">
-          <End Type="DeskAssemblyModel.Contract" Role="Contract" Multiplicity="1" />
+          <End Type="DeskAssemblyModel.Contract" Role="Contract" Multiplicity="0..1" />
           <End Type="DeskAssemblyModel.Movement" Role="Movement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Contract">

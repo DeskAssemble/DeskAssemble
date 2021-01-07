@@ -14,6 +14,8 @@ namespace DeskAssembleData
         public string IsSaleName { get; set; }
         public string CountryName { get; set; }
         public int ItemPrice { get; set; }
+
+        public int SaleQuantitySum { get; set; }
         public int QuantityPrice
         {
             get
