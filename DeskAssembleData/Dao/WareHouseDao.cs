@@ -27,7 +27,9 @@ namespace DeskAssembleData.Dao
 
                 foreach (var @group in query)
                 {
-                    WareHouseModel model = new WareHouseModel(group.Key, group.Sum(x => x.Quantity));
+                    WareHouseModel model = new WareHouseModel();
+                    model.ItemId = group.Key;
+                    model.Quantity = group.Sum(x => x.Quantity);
                     model.ItemName = itemNames[model.ItemId];
                     //model.WareHouseName = warehouseNames[model.WareHouseId];
                     models.Add(model);

@@ -279,7 +279,7 @@ namespace DeskAssembleData
                     OrderModel model = new OrderModel();
                     model.Month = group.Key;
                     model.QuantityPrice = group.Sum(g => g.QuantityPrice);
-                    if (model.Month != 9)
+                    if (model.Month != 1)
                     {
                         model.ProfitRate = (((model.QuantityPrice - models[models.Count-1].QuantityPrice) * 1.0) / models[models.Count-1].QuantityPrice) * 100;
                     }

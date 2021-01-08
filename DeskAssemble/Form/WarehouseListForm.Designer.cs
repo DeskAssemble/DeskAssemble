@@ -137,7 +137,7 @@ namespace DeskAssemble
             // colWQuantity
             // 
             this.colWQuantity.Caption = "수량";
-            this.colWQuantity.FieldName = "WQuantity";
+            this.colWQuantity.FieldName = "Quantity";
             this.colWQuantity.Name = "colWQuantity";
             this.colWQuantity.Visible = true;
             this.colWQuantity.VisibleIndex = 2;
