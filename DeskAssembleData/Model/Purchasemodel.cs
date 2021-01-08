@@ -22,7 +22,7 @@ namespace DeskAssembleData.Data
     {
         public int CategoryId { get; set; }
 
-        //public string PartName { get; set; }
+        public string CategoryName { get; set; }
 
         public int Quantity { get; set; }
 

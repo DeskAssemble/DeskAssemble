@@ -47,7 +47,8 @@ namespace DeskAssemble
             this.chartControl1.Name = "chartControl1";
             this.chartControl1.SelectionMode = DevExpress.XtraCharts.ElementSelectionMode.Single;
             this.chartControl1.SeriesSelectionMode = DevExpress.XtraCharts.SeriesSelectionMode.Point;
-            series1.ArgumentDataMember = "CategoryId";
+            series1.ArgumentDataMember = "CategoryName";
+            series1.LegendTextPattern = "{A}";
             series1.Name = "Series 1";
             series1.ValueDataMembersSerializable = "Quantity";
             series1.View = pieSeriesView1;
