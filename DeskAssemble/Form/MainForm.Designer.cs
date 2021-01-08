@@ -95,7 +95,7 @@ namespace DeskAssemble
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbonControl1.Size = new System.Drawing.Size(946, 160);
+            this.ribbonControl1.Size = new System.Drawing.Size(1222, 160);
             // 
             // barButtonItem1
             // 
@@ -299,7 +299,7 @@ namespace DeskAssemble
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 691);
+            this.ClientSize = new System.Drawing.Size(1222, 873);
             this.Controls.Add(this.ribbonControl1);
             this.IsMdiContainer = true;
             this.Name = "MainForm";
