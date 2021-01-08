@@ -30,38 +30,28 @@ namespace DeskAssemble
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            DevExpress.XtraPivotGrid.DataSourceColumnBinding dataSourceColumnBinding1 = new DevExpress.XtraPivotGrid.DataSourceColumnBinding();
+            DevExpress.XtraPivotGrid.DataSourceColumnBinding dataSourceColumnBinding2 = new DevExpress.XtraPivotGrid.DataSourceColumnBinding();
+            DevExpress.XtraPivotGrid.DataSourceColumnBinding dataSourceColumnBinding3 = new DevExpress.XtraPivotGrid.DataSourceColumnBinding();
+            DevExpress.XtraPivotGrid.DataSourceColumnBinding dataSourceColumnBinding4 = new DevExpress.XtraPivotGrid.DataSourceColumnBinding();
             this.wareHouseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colWarehouseId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAreasize = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.wareHouseModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colWareHouseName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colWQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colItemName = new DevExpress.XtraGrid.Columns.GridColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.pivotGridControl1 = new DevExpress.XtraPivotGrid.PivotGridControl();
+            this.movementBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pivotGridField1 = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.pivotGridField2 = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.pivotGridField3 = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.pivotGridField4 = new DevExpress.XtraPivotGrid.PivotGridField();
             ((System.ComponentModel.ISupportInitialize)(this.wareHouseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wareHouseModelBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movementBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.DataSource = this.wareHouseBindingSource;
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(694, 145);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            this.gridControl1.Load += new System.EventHandler(this.WarehouseListForm_Load);
             // 
             // wareHouseBindingSource
             // 
@@ -100,88 +90,103 @@ namespace DeskAssemble
             this.colAreasize.Visible = true;
             this.colAreasize.VisibleIndex = 2;
             // 
-            // gridControl2
+            // gridControl1
             // 
-            this.gridControl2.DataSource = this.wareHouseModelBindingSource;
-            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl2.Location = new System.Drawing.Point(0, 145);
-            this.gridControl2.MainView = this.gridView2;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(694, 380);
-            this.gridControl2.TabIndex = 1;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
-            this.gridControl2.Load += new System.EventHandler(this.WarehouseQuantity_Load);
+            this.gridControl1.DataSource = this.wareHouseBindingSource;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(1082, 145);
+            this.gridControl1.TabIndex = 0;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            this.gridControl1.Load += new System.EventHandler(this.WarehouseListForm_Load);
             // 
-            // wareHouseModelBindingSource
+            // pivotGridControl1
             // 
-            this.wareHouseModelBindingSource.DataSource = typeof(DeskAssembleData.WareHouseModel);
+            this.pivotGridControl1.DataSource = this.movementBindingSource;
+            this.pivotGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pivotGridControl1.Fields.AddRange(new DevExpress.XtraPivotGrid.PivotGridField[] {
+            this.pivotGridField1,
+            this.pivotGridField2,
+            this.pivotGridField3,
+            this.pivotGridField4});
+            this.pivotGridControl1.Location = new System.Drawing.Point(0, 145);
+            this.pivotGridControl1.Name = "pivotGridControl1";
+            this.pivotGridControl1.OptionsData.DataProcessingEngine = DevExpress.XtraPivotGrid.PivotDataProcessingEngine.Optimized;
+            this.pivotGridControl1.Size = new System.Drawing.Size(1082, 457);
+            this.pivotGridControl1.TabIndex = 1;
             // 
-            // gridView2
+            // movementBindingSource
             // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colWareHouseName,
-            this.colWQuantity,
-            this.colItemName});
-            this.gridView2.GridControl = this.gridControl2;
-            this.gridView2.Name = "gridView2";
+            this.movementBindingSource.DataSource = typeof(DeskAssembleData.Movement);
             // 
-            // colWareHouseName
+            // pivotGridField1
             // 
-            this.colWareHouseName.Caption = "창고";
-            this.colWareHouseName.FieldName = "WareHouseName";
-            this.colWareHouseName.Name = "colWareHouseName";
-            this.colWareHouseName.Visible = true;
-            this.colWareHouseName.VisibleIndex = 0;
+            this.pivotGridField1.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
+            this.pivotGridField1.AreaIndex = 0;
+            this.pivotGridField1.Caption = "구분";
+            dataSourceColumnBinding1.ColumnName = "IsProductName";
+            this.pivotGridField1.DataBinding = dataSourceColumnBinding1;
+            this.pivotGridField1.Name = "pivotGridField1";
             // 
-            // colWQuantity
+            // pivotGridField2
             // 
-            this.colWQuantity.Caption = "수량";
-            this.colWQuantity.FieldName = "Quantity";
-            this.colWQuantity.Name = "colWQuantity";
-            this.colWQuantity.Visible = true;
-            this.colWQuantity.VisibleIndex = 2;
+            this.pivotGridField2.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
+            this.pivotGridField2.AreaIndex = 1;
+            this.pivotGridField2.Caption = "품목";
+            dataSourceColumnBinding2.ColumnName = "ItemName";
+            this.pivotGridField2.DataBinding = dataSourceColumnBinding2;
+            this.pivotGridField2.Name = "pivotGridField2";
             // 
-            // colItemName
+            // pivotGridField3
             // 
-            this.colItemName.Caption = "품목";
-            this.colItemName.FieldName = "ItemName";
-            this.colItemName.Name = "colItemName";
-            this.colItemName.Visible = true;
-            this.colItemName.VisibleIndex = 1;
+            this.pivotGridField3.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.pivotGridField3.AreaIndex = 0;
+            this.pivotGridField3.Caption = "창고";
+            dataSourceColumnBinding3.ColumnName = "WareHouseName";
+            this.pivotGridField3.DataBinding = dataSourceColumnBinding3;
+            this.pivotGridField3.Name = "pivotGridField3";
+            // 
+            // pivotGridField4
+            // 
+            this.pivotGridField4.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
+            this.pivotGridField4.AreaIndex = 0;
+            dataSourceColumnBinding4.ColumnName = "TotalQuantity";
+            this.pivotGridField4.DataBinding = dataSourceColumnBinding4;
+            this.pivotGridField4.Name = "pivotGridField4";
             // 
             // WarehouseListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 525);
-            this.Controls.Add(this.gridControl2);
+            this.ClientSize = new System.Drawing.Size(1082, 602);
+            this.Controls.Add(this.pivotGridControl1);
             this.Controls.Add(this.gridControl1);
             this.Name = "WarehouseListForm";
             this.Text = "창고 리스트";
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wareHouseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wareHouseModelBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movementBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.BindingSource wareHouseBindingSource;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colWarehouseId;
         private DevExpress.XtraGrid.Columns.GridColumn colName;
         private DevExpress.XtraGrid.Columns.GridColumn colAreasize;
-        private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraGrid.Columns.GridColumn colWareHouseName;
-        private DevExpress.XtraGrid.Columns.GridColumn colWQuantity;
-        private DevExpress.XtraGrid.Columns.GridColumn colItemName;
-        private System.Windows.Forms.BindingSource wareHouseModelBindingSource;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraPivotGrid.PivotGridControl pivotGridControl1;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField1;
+        private System.Windows.Forms.BindingSource movementBindingSource;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField2;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField3;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField4;
     }
 }

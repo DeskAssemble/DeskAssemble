@@ -41,5 +41,51 @@ namespace DeskAssembleData.Dao
 
             }
         }
+
+        public List<Movement> Search2()
+        {
+            using (var context = DbContextCreator.Create())
+            {
+                var query = from x in context.Movements
+                            select new
+                            {
+                                Movement = x,
+                                ItemName = x.Item.Name,
+                                WareHouseName = x.WareHouse.Name,
+                                IsProduct = x.Item.IsProduct,
+                            };
+
+                var list = query.ToList();
+
+                List<Movement> movements = new List<Movement>();
+                
+                foreach (var item in list)
+                {
+                    item.Movement.ItemName = item.ItemName;
+                    item.Movement.WareHouseName = item.WareHouseName;
+                    item.Movement.IsProduct = item.IsProduct;
+
+                    if (item.Movement.IsProduct == true)
+                        item.Movement.IsProductName = "제품";
+                    else if (item.Movement.IsProduct == false)
+                        item.Movement.IsProductName = "부품";
+
+
+                    if(item.Movement.IsIn == true)
+                    {
+                       item.Movement.TotalQuantity = item.Movement.TotalQuantity + item.Movement.Quantity;
+                    }
+                    else if(item.Movement.IsIn == false)
+                    {
+                       item.Movement.TotalQuantity =  item.Movement.TotalQuantity - item.Movement.Quantity;
+                    }
+
+                    movements.Add(item.Movement);
+                }
+                //return list.Select(x => x.Movement).ToList();
+                return movements;
+
+            }
+        }
     }
 }

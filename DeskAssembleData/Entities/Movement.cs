@@ -12,5 +12,15 @@ namespace DeskAssembleData
         public string ContractName { get; set; }
         public string WareHouseName { get; set; }
         public string IsInName { get; set; }
+        public bool IsProduct { get; set; }
+        public string IsProductName { get; set; }
+        public int TotalQuantity { get; set; }
+        //{
+        //    get
+        //    {
+        //        return 0;
+        //    }
+        //    set { }
+        //}
     }
 }

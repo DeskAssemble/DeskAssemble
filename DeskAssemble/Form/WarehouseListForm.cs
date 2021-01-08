@@ -26,11 +26,17 @@ namespace DeskAssemble
             wareHouseBindingSource.DataSource = list;
         }
 
-        private void WarehouseQuantity_Load(object sender, EventArgs e)
-        {
-            List<WareHouseModel> list = Dao.WareHouse.GetQuantity();
-            wareHouseModelBindingSource.DataSource = list;
+        //private void pivotGridControl1_Load(object sender, EventArgs e)
+        //{
+        //    List<Movement> list = Dao.Movement.Search2();
+        //    movementBindingSource.DataSource = list;
+        //}
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            movementBindingSource.DataSource = Dao.Movement.Search2();
         }
     }
 }
