@@ -44,12 +44,12 @@ namespace DeskAssemble
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
             this.chartControl1.Diagram = xyDiagram1;
-            this.chartControl1.Location = new System.Drawing.Point(12, 12);
+            this.chartControl1.Location = new System.Drawing.Point(12, 13);
             this.chartControl1.Name = "chartControl1";
-            this.chartControl1.SeriesDataMember = "ContractId";
+            this.chartControl1.SeriesDataMember = "VendeeName";
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            this.chartControl1.SeriesTemplate.ArgumentDataMember = "ContractId";
-            this.chartControl1.SeriesTemplate.SeriesDataMember = "ContractId";
+            this.chartControl1.SeriesTemplate.ArgumentDataMember = "VendeeName";
+            this.chartControl1.SeriesTemplate.SeriesDataMember = "VendeeName";
             this.chartControl1.SeriesTemplate.ValueDataMembersSerializable = "Quantity";
             this.chartControl1.Size = new System.Drawing.Size(806, 540);
             this.chartControl1.TabIndex = 0;

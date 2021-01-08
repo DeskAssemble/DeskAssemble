@@ -46,7 +46,8 @@ namespace DeskAssemble
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartControl1.Location = new System.Drawing.Point(0, 0);
             this.chartControl1.Name = "chartControl1";
-            series1.ArgumentDataMember = "ItemId";
+            series1.ArgumentDataMember = "PartName";
+            series1.LegendTextPattern = "{A}";
             series1.Name = "Series 1";
             series1.ValueDataMembersSerializable = "Quantity";
             series1.View = pieSeriesView1;

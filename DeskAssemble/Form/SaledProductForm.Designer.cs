@@ -30,6 +30,7 @@ namespace DeskAssemble
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraCharts.Legend legend1 = new DevExpress.XtraCharts.Legend();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.PieSeriesView pieSeriesView1 = new DevExpress.XtraCharts.PieSeriesView();
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
@@ -43,11 +44,15 @@ namespace DeskAssemble
             // chartControl1
             // 
             this.chartControl1.DataSource = this.salemodel2BindingSource;
+            legend1.Name = "Legend 1";
+            this.chartControl1.Legends.AddRange(new DevExpress.XtraCharts.Legend[] {
+            legend1});
             this.chartControl1.Location = new System.Drawing.Point(14, 12);
             this.chartControl1.Name = "chartControl1";
             this.chartControl1.SelectionMode = DevExpress.XtraCharts.ElementSelectionMode.Single;
             this.chartControl1.SeriesSelectionMode = DevExpress.XtraCharts.SeriesSelectionMode.Point;
             series1.ArgumentDataMember = "ItemId";
+            series1.LegendTextPattern = "{A}";
             series1.Name = "Series 1";
             series1.ValueDataMembersSerializable = "Quantity";
             series1.View = pieSeriesView1;

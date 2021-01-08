@@ -56,45 +56,62 @@ namespace DeskAssembleData
             {
                 using (var context = DbContextCreator.Create())
                 {
-                    List<Item> Items = context.Items.ToList();
+                    List<Item> items = context.Items.ToList();
+                    
 
                     var query = from i in context.Items
                                 join o in context.Orders on i.ItemId equals o.ItemId
                                 where i.IsProduct == false && o.IsSale == false
-                                select new { CategoryId = i.CategoryId, ItemId = i.ItemId, Quantity = o.Quantity };
+                                select new
+                                {
+                                    ItemId = i.ItemId,
+                                    CategoryId = i.CategoryId,
+                                    Quantities = i.Orders.Sum(s => s.Quantity),
+                                    CategoryName = i.Name
+                                };
+
+                    var query1 = from x in query
+                                 group x by x.CategoryId into g
+                                 select g;
+
+                    var models = new List<Purchasemodel2>();
+                    foreach (var group in query1)
+                    {
+                        Purchasemodel2 model = new Purchasemodel2();
+                        model.CategoryId = group.Key;
+                        model.Quantity = group.Sum(g => g.Quantities);
+                        
+
+                        if (model.CategoryId == 2)
+                            model.CategoryName = "판";
+                        else if (model.CategoryId == 3)
+                            model.CategoryName = "다리";
+                        else if (model.CategoryId == 4)
+                            model.CategoryName = "볼트 & 너트";
+                       
+                        models.Add(model);
+                    }
+
+                    return models;
+                    //List<Item> Items = context.Items.ToList();
+                    //var partNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
+
+                    //var query = from i in context.Items
+                    //            join o in context.Orders on i.ItemId equals o.ItemId
+                    //            where i.IsProduct == false && o.IsSale == false
+                    //            select new { CategoryId = i.CategoryId, ItemId = i.ItemId, Quantity = o.Quantity };
 
 
-                    var query1 = query.GroupBy(x => x.CategoryId, x => x.Quantity,
-                        (key, info) => new Purchasemodel2 { CategoryId = key, Quantity = info.Sum() });
+                    //var query1 = query.GroupBy(x => x.CategoryId, x => x.Quantity,
+                    //    (key, info) => new Purchasemodel2 { CategoryId = key, Quantity = info.Sum() });
 
-                    return query1.ToList();
+
+
+                    //return query1.ToList();
                 }
-                //using (var context = DbContextCreator.Create())
-                //{
-                //    var PartNames = context.Items.ToDictionary(x => x.CategoryId, x => x.Name);
-
-                //    var query = from i in context.Items
-                //                where i.IsProduct == false
-                //                select new { Quantities = i.Orders.Sum(q => q.Quantity), CategoryId = i.CategoryId };
-
-                //    var query2 = from x in query
-                //                 group x by x.CategoryId into g
-                //                 select g;
-
-                //    var pmodels = new List<Purchasemodel2>();
-                //    foreach (var group in query2)
-                //    {
-                //        Purchasemodel2 pmodel = new Purchasemodel2();
-                //        pmodel.CategoryId = group.Key;
-                //        pmodel.Quantity = group.Sum(g => g.Quantities);
-                //        pmodel.PartName = PartNames[group.Key];
-
-                //        pmodels.Add(pmodel);
-                //    }
-
-                //    return pmodels;
-                //}
+               
             }
+            
         }
 
         public List<Salemodel2> GetSaleModels()
@@ -103,19 +120,40 @@ namespace DeskAssembleData
                 using (var context = DbContextCreator.Create())
                 {
                     List<Item> items = context.Items.ToList();
+                   // var productNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
 
                     var query = from i in context.Items
                                 join o in context.Orders on i.ItemId equals o.ItemId
                                 join c in context.Contracts on o.ContractId equals c.ContractId
-                                where i.IsProduct == true// && c.IsVendee == true  && o.IsSale == true
-                                select new { ItemId = i.ItemId, ContractId = c.ContractId, Quantity = o.Quantity, ProductName = i.Name };
+                                where i.IsProduct == true  //&& o.IsSale == true //&& c.IsVendee == true
+                                select new { ItemId = i.ItemId, ContractId = c.ContractId,
+                                    Quantity = o.Quantity};
 
 
                     var query1 = query.GroupBy(x => x.ItemId, x => x.Quantity,
-                        (key, info) => new Salemodel2 { ItemId = key, Quantity = info.Sum()});
+                        (key, info) => new Salemodel2 { ItemId = key, Quantity = info.Sum() });
 
                     return query1.ToList();
+
+                    //foreach (var group in query1)
+                    //{
+                    //    group.ItemId = ;
+                    //    group.Quantity;
+                        
+                    //    if (group.ItemId == 1)
+                    //        group.ProductName = "책상1";
+                    //    else if (group.ItemId == 2)
+                    //        group.ProductName = "책상2";
+                    //    else if (group.ItemId == 3)
+                    //        group.ProductName = "책상3";
+                    //    else if (group.ItemId == 4)
+                    //        group.ProductName = "책상4";
+                    //    else if (group.ItemId == 20)
+                    //        group.ProductName = "책상5";
+                    //}
+                    //return list.ToList();
                     
+                   
                 }
             }
         }

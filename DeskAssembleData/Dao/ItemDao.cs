@@ -18,6 +18,7 @@ namespace DeskAssembleData
             using (var context = DbContextCreator.Create())
             {
                 List<Purcahselistmodel> models = new List<Purcahselistmodel>();
+                var itemNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
 
                 var query = from x in context.Items
                             where x.CategoryId == categoryId
@@ -59,6 +60,7 @@ namespace DeskAssembleData
             using (var context = DbContextCreator.Create())
             {
                 List<ProductsaledetailModel> smodels = new List<ProductsaledetailModel>();
+                var contractNames = context.Contracts.ToDictionary(x => x.ContractId, x => x.Name);
 
 
 
@@ -78,7 +80,7 @@ namespace DeskAssembleData
 
                     smodel.Quantity = item.SaleQuantitySum;
                     smodel.ContractId = item.ContractId;
-                    //smodel.VendeeName = item.Contract.Name;
+                    smodel.VendeeName = item.Contract.Name;
 
 
                     smodels.Add(smodel);
