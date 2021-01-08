@@ -153,7 +153,7 @@ namespace DeskAssemble
             // 
             this.pivotGridField4.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
             this.pivotGridField4.AreaIndex = 0;
-            dataSourceColumnBinding4.ColumnName = "TotalQuantity";
+            dataSourceColumnBinding4.ColumnName = "Quantity";
             this.pivotGridField4.DataBinding = dataSourceColumnBinding4;
             this.pivotGridField4.Name = "pivotGridField4";
             // 

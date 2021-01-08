@@ -70,21 +70,14 @@ namespace DeskAssembleData.Dao
                     else if (item.Movement.IsProduct == false)
                         item.Movement.IsProductName = "부품";
 
-
-                    if(item.Movement.IsIn == true)
+                    if(item.Movement.IsIn == false)
                     {
-                       item.Movement.TotalQuantity = item.Movement.TotalQuantity + item.Movement.Quantity;
-                    }
-                    else if(item.Movement.IsIn == false)
-                    {
-                       item.Movement.TotalQuantity =  item.Movement.TotalQuantity - item.Movement.Quantity;
+                       item.Movement.Quantity = - item.Movement.Quantity;
                     }
 
                     movements.Add(item.Movement);
                 }
-                //return list.Select(x => x.Movement).ToList();
                 return movements;
-
             }
         }
     }
