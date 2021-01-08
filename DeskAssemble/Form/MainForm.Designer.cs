@@ -211,11 +211,7 @@ namespace DeskAssemble
             this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem17_ItemClick);
             // 
             // barButtonItem18
-            // 
-            this.barButtonItem18.Caption = "모니터링";
-            this.barButtonItem18.Id = 19;
-            this.barButtonItem18.Name = "barButtonItem18";
-            this.barButtonItem18.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem18_ItemClick);
+            //
             // 
             // barButtonItem19
             // 

@@ -84,11 +84,6 @@ namespace DeskAssemble
         {
             ShowChildForm(new ProductCatalogueForm());
         }
-
-        private void barButtonItem18_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ShowChildForm(new CaptureForm());
-        }
     }
 
 }
