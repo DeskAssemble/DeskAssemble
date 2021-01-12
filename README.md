@@ -93,14 +93,14 @@
 ### 7. 국가별 부품 구매비율
 
 - 데이터의 Order 테이블에서 부품을 발주한 회사의 국가별로 지도에 BubbleChart를 출력
-- Bubble의 크기별로 비율을 출력
+- Bubble의 크기별로 구매 비율을 출력
 
 ![국가별 부품 구매비율](https://user-images.githubusercontent.com/74530618/103980334-0936f000-51c3-11eb-84cd-db0a1f64501e.jpg)
 
 ### 8. 국가별 제품 판매비율
 
  - 데이터의 Order 테이블에서 제품을 주문한 회사의 국가별로 지도에 BubbleChart를 출력
- - Bubble의 크기별로 비율을 출력
+ - Bubble의 크기별로 판매 비율을 출력
 
 ![국가별 제품 판매비율](https://user-images.githubusercontent.com/74530618/103980491-54e99980-51c3-11eb-93b8-ebb704e0877a.jpg)
 
