@@ -233,7 +233,6 @@ namespace DeskAssemble
             this.ribbonPageGroup7,
             this.ribbonPageGroup9});
             this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "TableAssemble";
             // 
             // ribbonPageGroup1
             // 

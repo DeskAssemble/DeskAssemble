@@ -93,21 +93,7 @@ namespace DeskAssembleData
                     }
 
                     return models;
-                    //List<Item> Items = context.Items.ToList();
-                    //var partNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
-
-                    //var query = from i in context.Items
-                    //            join o in context.Orders on i.ItemId equals o.ItemId
-                    //            where i.IsProduct == false && o.IsSale == false
-                    //            select new { CategoryId = i.CategoryId, ItemId = i.ItemId, Quantity = o.Quantity };
-
-
-                    //var query1 = query.GroupBy(x => x.CategoryId, x => x.Quantity,
-                    //    (key, info) => new Purchasemodel2 { CategoryId = key, Quantity = info.Sum() });
-
-
-
-                    //return query1.ToList();
+                    
                 }
                
             }
@@ -119,41 +105,42 @@ namespace DeskAssembleData
             {
                 using (var context = DbContextCreator.Create())
                 {
-                    List<Item> items = context.Items.ToList();
-                   // var productNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
+                    var query = from p in context.Orders
+                                where p.IsSale == true
+                                select new
+                                {
+                                    Order = p,
+                                    Quantity = p.Quantity,
+                                    ProductName = p.Item.Name,
+                                    ItemId = p.ItemId
+                                };
 
-                    var query = from i in context.Items
-                                join o in context.Orders on i.ItemId equals o.ItemId
-                                join c in context.Contracts on o.ContractId equals c.ContractId
-                                where i.IsProduct == true  //&& o.IsSale == true //&& c.IsVendee == true
-                                select new { ItemId = i.ItemId, ContractId = c.ContractId,
-                                    Quantity = o.Quantity};
+                    var query2 = from x in query
+                                 group x by x.ItemId into g
+                                 select g;
 
+                    List<Salemodel2> models = new List<Salemodel2>();
 
-                    var query1 = query.GroupBy(x => x.ItemId, x => x.Quantity,
-                        (key, info) => new Salemodel2 { ItemId = key, Quantity = info.Sum() });
+                    foreach (var @group in query2)
+                    {
+                        Salemodel2 model = new Salemodel2();
+                        model.ItemId = group.Key;
+                        model.Quantity = group.Sum(g => g.Quantity);
 
-                    return query1.ToList();
-
-                    //foreach (var group in query1)
-                    //{
-                    //    group.ItemId = ;
-                    //    group.Quantity;
+                        if (model.ItemId == 1)
+                            model.ProductName = "책상1";
+                        else if (model.ItemId == 2)
+                            model.ProductName = "책상2";
+                        else if (model.ItemId == 3)
+                            model.ProductName = "책상3";
+                        else if (model.ItemId == 4)
+                            model.ProductName = "책상4";
+                        else if (model.ItemId == 20)
+                            model.ProductName = "책상5";
                         
-                    //    if (group.ItemId == 1)
-                    //        group.ProductName = "책상1";
-                    //    else if (group.ItemId == 2)
-                    //        group.ProductName = "책상2";
-                    //    else if (group.ItemId == 3)
-                    //        group.ProductName = "책상3";
-                    //    else if (group.ItemId == 4)
-                    //        group.ProductName = "책상4";
-                    //    else if (group.ItemId == 20)
-                    //        group.ProductName = "책상5";
-                    //}
-                    //return list.ToList();
-                    
-                   
+                        models.Add(model);
+                    }
+                    return models;
                 }
             }
         }
