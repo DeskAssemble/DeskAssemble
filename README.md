@@ -135,7 +135,17 @@
  - 정보를 입력하고 이미지를 불러와 데이터를 등록/수정/삭제 가능
  
  ![제품목록](https://user-images.githubusercontent.com/74530618/103982168-52d50a00-51c6-11eb-8968-c5bbf1539757.jpg)
- 
+## 다이어그램
+
+### 1. 순서도
+
+### 2. 클래스 다이어그램
+#### DAO(Data Access Object)
+![ClassDiagram3](https://user-images.githubusercontent.com/74530618/104261852-c1b5aa00-54c9-11eb-9172-b6a2bb92a7f2.jpg)
+
+#### Project form classes
+![ClassDiagram4](https://user-images.githubusercontent.com/74530618/104262839-bebbb900-54cb-11eb-8dd6-5b420a7a7c6e.jpg)
+
 ## 발생한 이슈
 1. 이슈 : MSSQL에 이미지를 직접적으로 저장하는 방법을 못찾음.
 2. 이슈 : 지도 이미지 속 원하는 위치에 버블차트를 그리기 어려움.
