@@ -6,7 +6,7 @@
 
 ## 개발기간
 
-2020년 12월 28일 ~ 2021년 1월 13일
+2020년 12월 28일 ~ 2021년 1월 13일 (약 2주)
 
 ## 개발 환경
 
@@ -93,14 +93,14 @@
 ### 7. 국가별 부품 구매비율
 
 - 데이터의 Order 테이블에서 부품을 발주한 회사의 국가별로 지도에 BubbleChart를 출력
-- Bubble의 크기별로 비율을 출력
+- Bubble의 크기별로 구매 비율을 출력
 
 ![국가별 부품 구매비율](https://user-images.githubusercontent.com/74530618/103980334-0936f000-51c3-11eb-84cd-db0a1f64501e.jpg)
 
 ### 8. 국가별 제품 판매비율
 
  - 데이터의 Order 테이블에서 제품을 주문한 회사의 국가별로 지도에 BubbleChart를 출력
- - Bubble의 크기별로 비율을 출력
+ - Bubble의 크기별로 판매 비율을 출력
 
 ![국가별 제품 판매비율](https://user-images.githubusercontent.com/74530618/103980491-54e99980-51c3-11eb-93b8-ebb704e0877a.jpg)
 
@@ -135,9 +135,43 @@
  - 정보를 입력하고 이미지를 불러와 데이터를 등록/수정/삭제 가능
  
  ![제품목록](https://user-images.githubusercontent.com/74530618/103982168-52d50a00-51c6-11eb-8968-c5bbf1539757.jpg)
- 
+## 다이어그램
+
+### 1. 순서도
+#### Main Process
+
+![210112](https://user-images.githubusercontent.com/74527543/104266712-7b654880-54d3-11eb-83a0-0dbcdd54fdb4.png)
+![2101121](https://user-images.githubusercontent.com/74527543/104266082-460c2b00-54d2-11eb-826f-6ca4a2d89ae4.png)
+
+#### RFID
+
+![210112RFID](https://user-images.githubusercontent.com/74527543/104266099-4b697580-54d2-11eb-80f5-fe82cb215ecb.png)
+
+
+### 2. 클래스 다이어그램
+#### DAO(Data Access Object)
+![ClassDiagram3](https://user-images.githubusercontent.com/74530618/104261852-c1b5aa00-54c9-11eb-9172-b6a2bb92a7f2.jpg)
+
+#### Project form classes
+![ClassDiagram4](https://user-images.githubusercontent.com/74530618/104262839-bebbb900-54cb-11eb-8dd6-5b420a7a7c6e.jpg)
+
+### 3. RFID 시퀀스 다이어그램
+![RFID 시퀀스](https://user-images.githubusercontent.com/74530618/104263676-62599900-54cd-11eb-86b1-20cf7f21c9bf.jpg)
+
 ## 발생한 이슈
+1. 이슈 : MSSQL에 이미지를 직접적으로 저장하는 방법을 못찾음.
+2. 이슈 : 지도 이미지 속 원하는 위치에 버블차트를 그리기 어려움.
+3. 이슈 : DevExpress에서 파이차트 요소 클릭 이벤트 기능을 찾을 수가 없었다.
+4. 이슈 : 창고 내 재고 리스트 데이터를 그리드 뷰로 출력 시 창고 이름 출력 안됨.
 
 ### 원인
+1. 이슈 원인 : 이미지를 이진데이터로 컨버트 하는 방법을 찾기 쉽지 않았다.
+2. 이슈 원인 : 지도 이미지내 위치의 좌표가 X, Y 값으로 나오는데 지도의 크기에 따라 매번 달라짐.
+3. 이슈 원인 : DevExpress에서 파이차트 상세 요소를 클릭하는 이벤트가 없었다.
+4. 이슈 원인 : 쿼리시 Dictionary 기능을 중복사용 할 수가 없었다.
 
 ### 해결방법
+1. 이슈 해결 방법 : 비주얼 스튜디오 WinForm으로 이미지를 이진데이터로 컨버트해서 DB에 저장함.
+2. 이슈 해결 방법 : 마이크로소프트사에서 지원하는 지도 컨트롤 중 Bing Map을 활용하요 해당 위치를 X,Y 좌표값이 아닌 위도와 경도로 표시.
+3. 이슈 해결 방법 : 파이차트 요소 클릭 이벤트가 아닌 요소 값이 바뀌는 이벤트를 활용해서 기능 사용함.
+4. 이슈 해결 방법 : 기존 그리드 컨트롤에서 피벗 그리드 컨트롤로 바꿈으로 해결.
