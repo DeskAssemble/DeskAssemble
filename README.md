@@ -138,6 +138,10 @@
 ## 다이어그램
 
 ### 1. 순서도
+![210112](https://user-images.githubusercontent.com/74527543/104266049-31c82e00-54d2-11eb-9b87-357d2997ea81.png)
+![2101121](https://user-images.githubusercontent.com/74527543/104266082-460c2b00-54d2-11eb-826f-6ca4a2d89ae4.png)
+![210112RFID](https://user-images.githubusercontent.com/74527543/104266099-4b697580-54d2-11eb-80f5-fe82cb215ecb.png)
+
 
 ### 2. 클래스 다이어그램
 #### DAO(Data Access Object)
