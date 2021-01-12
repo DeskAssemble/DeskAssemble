@@ -139,7 +139,7 @@
 
 ### 1. 순서도
 1.Main Process
-![210112](https://user-images.githubusercontent.com/74527543/104266049-31c82e00-54d2-11eb-9b87-357d2997ea81.png)
+![210112](https://user-images.githubusercontent.com/74527543/104266712-7b654880-54d3-11eb-83a0-0dbcdd54fdb4.png)
 ![2101121](https://user-images.githubusercontent.com/74527543/104266082-460c2b00-54d2-11eb-826f-6ca4a2d89ae4.png)
 2.RFID
 ![210112RFID](https://user-images.githubusercontent.com/74527543/104266099-4b697580-54d2-11eb-80f5-fe82cb215ecb.png)
