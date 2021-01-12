@@ -74,7 +74,7 @@
 
 #### - 부품 상세 구매비율
 
- 차트의 파이조각을 클릭했을 때 부품의 상세비율을 PieChart로 출력
+ 차트의 파이조각을 클릭했을 때 부품의 상세항목별 구매비율을 PieChart로 출력
  
  ![부품 상세 구매비율](https://user-images.githubusercontent.com/74530618/103979541-55813080-51c1-11eb-906b-82f362f776af.jpg)
 
@@ -82,13 +82,13 @@
 
  데이터의 Order 테이블에서 주문받은 제품의 비율을 제품별 PieChart로 출력
  
- ![제품 판매비율](https://user-images.githubusercontent.com/74530618/103979732-c4f72000-51c1-11eb-99b4-edf53d7176e4.jpg)
+![제품 판매비율](https://user-images.githubusercontent.com/74530618/104322732-a332cb80-5528-11eb-8789-456fcf923aaf.jpg)
 
 #### - 제품 상세 판매비율
 
- 차트의 파이조각을 클릭했을 때 제품의 상세비율을 BarChart로 출력
+ 차트의 파이조각을 클릭했을 때 제품의 거래처벌 상세 판매비율을 BarChart로 출력
  
- ![제품 상세 판매비율](https://user-images.githubusercontent.com/74530618/103980879-0ee10580-51c4-11eb-901e-cd60c995216a.jpg)
+ ![제품 판매비율 상세](https://user-images.githubusercontent.com/74530618/104322776-aded6080-5528-11eb-8d18-622cc495892a.jpg)
 
 ### 7. 국가별 부품 구매비율
 
