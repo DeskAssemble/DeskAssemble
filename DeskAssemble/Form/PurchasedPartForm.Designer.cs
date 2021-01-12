@@ -43,7 +43,9 @@ namespace DeskAssemble
             // chartControl1
             // 
             this.chartControl1.DataSource = this.purchasemodel2BindingSource;
-            this.chartControl1.Location = new System.Drawing.Point(28, 12);
+            this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartControl1.Location = new System.Drawing.Point(0, 0);
+            this.chartControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartControl1.Name = "chartControl1";
             this.chartControl1.SelectionMode = DevExpress.XtraCharts.ElementSelectionMode.Single;
             this.chartControl1.SeriesSelectionMode = DevExpress.XtraCharts.SeriesSelectionMode.Point;
@@ -54,7 +56,7 @@ namespace DeskAssemble
             series1.View = pieSeriesView1;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
-            this.chartControl1.Size = new System.Drawing.Size(806, 694);
+            this.chartControl1.Size = new System.Drawing.Size(847, 571);
             this.chartControl1.TabIndex = 0;
             this.chartControl1.SelectedItemsChanged += new DevExpress.XtraCharts.SelectedItemsChangedEventHandler(this.chartControl1_SelectedItemsChanged);
             // 
@@ -64,13 +66,12 @@ namespace DeskAssemble
             // 
             // PurchasedPartForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 734);
+            this.ClientSize = new System.Drawing.Size(847, 571);
             this.Controls.Add(this.chartControl1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "PurchasedPartForm";
-            this.Text = "부품 전체 구매량";
+            this.Text = "부품 전체 구매비율";
             ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();

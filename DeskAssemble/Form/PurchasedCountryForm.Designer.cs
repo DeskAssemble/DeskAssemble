@@ -46,9 +46,8 @@ namespace DeskAssemble
             this.mapControl1.Layers.Add(this.imageLayer1);
             this.mapControl1.Layers.Add(this.vectorItemsLayer1);
             this.mapControl1.Location = new System.Drawing.Point(0, 0);
-            this.mapControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.mapControl1.Name = "mapControl1";
-            this.mapControl1.Size = new System.Drawing.Size(837, 591);
+            this.mapControl1.Size = new System.Drawing.Size(732, 460);
             this.mapControl1.TabIndex = 0;
             this.mapControl1.MapItemClick += new DevExpress.XtraMap.MapItemClickEventHandler(this.mapControl1_MapItemClick);
             this.imageLayer1.DataProvider = this.bingMapDataProvider1;
@@ -67,13 +66,12 @@ namespace DeskAssemble
             // 
             // PurchasedCountryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 591);
+            this.ClientSize = new System.Drawing.Size(732, 460);
             this.Controls.Add(this.mapControl1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "PurchasedCountryForm";
-            this.Text = "   국가별 부품 구매량";
+            this.Text = "국가별 부품 구매비율";
             ((System.ComponentModel.ISupportInitialize)(this.mapControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mapChartModelBindingSource)).EndInit();
             this.ResumeLayout(false);

@@ -31,8 +31,8 @@ namespace DeskAssemble
         {
             this.components = new System.ComponentModel.Container();
             this.mapControl1 = new DevExpress.XtraMap.MapControl();
-            this.bingMapDataProvider1 = new DevExpress.XtraMap.BingMapDataProvider();
             this.imageLayer1 = new DevExpress.XtraMap.ImageLayer();
+            this.bingMapDataProvider1 = new DevExpress.XtraMap.BingMapDataProvider();
             this.vectorItemsLayer1 = new DevExpress.XtraMap.VectorItemsLayer();
             this.bubbleChartDataAdapter1 = new DevExpress.XtraMap.BubbleChartDataAdapter();
             this.mapChartModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -49,9 +49,9 @@ namespace DeskAssemble
             this.mapControl1.Name = "mapControl1";
             this.mapControl1.Size = new System.Drawing.Size(1087, 541);
             this.mapControl1.TabIndex = 0;
+            this.imageLayer1.DataProvider = this.bingMapDataProvider1;
             this.bingMapDataProvider1.BingKey = "AgvMO35OGV6SrETYJ66iBZkuemtqDfYvwqHv4in8tjYI7TJU5zG5SZYI-3l-vZZC";
             this.bingMapDataProvider1.Kind = DevExpress.XtraMap.BingMapKind.Road;
-            this.imageLayer1.DataProvider = this.bingMapDataProvider1;
             this.vectorItemsLayer1.Data = this.bubbleChartDataAdapter1;
             this.bubbleChartDataAdapter1.DataSource = this.mapChartModelBindingSource;
             this.bubbleChartDataAdapter1.Mappings.Latitude = "Latitude";
@@ -69,7 +69,7 @@ namespace DeskAssemble
             this.ClientSize = new System.Drawing.Size(1087, 541);
             this.Controls.Add(this.mapControl1);
             this.Name = "SaledCountryForm";
-            this.Text = "국가별 제품 판매량";
+            this.Text = "국가별 제품 판매비율";
             ((System.ComponentModel.ISupportInitialize)(this.mapControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mapChartModelBindingSource)).EndInit();
             this.ResumeLayout(false);

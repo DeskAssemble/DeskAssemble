@@ -58,7 +58,6 @@ namespace DeskAssemble
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
@@ -91,7 +90,7 @@ namespace DeskAssemble
             this.barButtonItem18,
             this.barButtonItem19});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 21;
+            this.ribbonControl1.MaxItemId = 22;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -120,7 +119,7 @@ namespace DeskAssemble
             // 
             // barButtonItem4
             // 
-            this.barButtonItem4.Caption = "부품 전체 구매량";
+            this.barButtonItem4.Caption = "부품 전체 구매비율";
             this.barButtonItem4.Id = 5;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
@@ -163,21 +162,21 @@ namespace DeskAssemble
             // 
             // barButtonItem11
             // 
-            this.barButtonItem11.Caption = "국가별 부품 구매량";
+            this.barButtonItem11.Caption = "국가별 부품 구매비율";
             this.barButtonItem11.Id = 12;
             this.barButtonItem11.Name = "barButtonItem11";
             this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
             // 
             // barButtonItem12
             // 
-            this.barButtonItem12.Caption = "제품 전체 판매량";
+            this.barButtonItem12.Caption = "제품 전체 판매비율";
             this.barButtonItem12.Id = 13;
             this.barButtonItem12.Name = "barButtonItem12";
             this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
             // 
             // barButtonItem13
             // 
-            this.barButtonItem13.Caption = "국가별 제품 판매량";
+            this.barButtonItem13.Caption = "국가별 제품 판매비율";
             this.barButtonItem13.Id = 14;
             this.barButtonItem13.Name = "barButtonItem13";
             this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
@@ -211,7 +210,9 @@ namespace DeskAssemble
             this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem17_ItemClick);
             // 
             // barButtonItem18
-            //
+            // 
+            this.barButtonItem18.Id = 21;
+            this.barButtonItem18.Name = "barButtonItem18";
             // 
             // barButtonItem19
             // 
@@ -230,7 +231,6 @@ namespace DeskAssemble
             this.ribbonPageGroup5,
             this.ribbonPageGroup6,
             this.ribbonPageGroup7,
-            this.ribbonPageGroup8,
             this.ribbonPageGroup9});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "TableAssemble";
@@ -276,11 +276,6 @@ namespace DeskAssemble
             // 
             this.ribbonPageGroup7.ItemLinks.Add(this.barButtonItem17);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
-            // 
-            // ribbonPageGroup8
-            // 
-            this.ribbonPageGroup8.ItemLinks.Add(this.barButtonItem18);
-            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
             // 
             // ribbonPageGroup9
             // 
@@ -339,7 +334,6 @@ namespace DeskAssemble
         private DevExpress.XtraBars.BarButtonItem barButtonItem19;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
     }
 }
