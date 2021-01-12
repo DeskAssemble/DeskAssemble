@@ -146,6 +146,9 @@
 #### Project form classes
 ![ClassDiagram4](https://user-images.githubusercontent.com/74530618/104262839-bebbb900-54cb-11eb-8dd6-5b420a7a7c6e.jpg)
 
+### 3. RFID 시퀀스 다이어그램
+![RFID 시퀀스](https://user-images.githubusercontent.com/74530618/104263676-62599900-54cd-11eb-86b1-20cf7f21c9bf.jpg)
+
 ## 발생한 이슈
 1. 이슈 : MSSQL에 이미지를 직접적으로 저장하는 방법을 못찾음.
 2. 이슈 : 지도 이미지 속 원하는 위치에 버블차트를 그리기 어려움.
