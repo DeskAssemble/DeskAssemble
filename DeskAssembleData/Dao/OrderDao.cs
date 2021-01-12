@@ -56,31 +56,28 @@ namespace DeskAssembleData
             {
                 using (var context = DbContextCreator.Create())
                 {
-                    List<Item> items = context.Items.ToList();
-                    
+                    var partNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
 
-                    var query = from i in context.Items
-                                join o in context.Orders on i.ItemId equals o.ItemId
-                                where i.IsProduct == false && o.IsSale == false
+                    var query = from p in context.Orders
+                                where p.IsSale == false
                                 select new
                                 {
-                                    ItemId = i.ItemId,
-                                    CategoryId = i.CategoryId,
-                                    Quantities = i.Orders.Sum(s => s.Quantity),
-                                    CategoryName = i.Name
+                                    Order = p,
+                                    Quantity = p.Quantity,
+                                    CategoryId = p.Item.CategoryId
                                 };
 
-                    var query1 = from x in query
+                    var query2 = from x in query
                                  group x by x.CategoryId into g
                                  select g;
 
                     var models = new List<Purchasemodel2>();
-                    foreach (var group in query1)
+
+                    foreach (var @group in query2)
                     {
                         Purchasemodel2 model = new Purchasemodel2();
                         model.CategoryId = group.Key;
-                        model.Quantity = group.Sum(g => g.Quantities);
-                        
+                        model.Quantity = group.Sum(x => x.Quantity);
 
                         if (model.CategoryId == 2)
                             model.CategoryName = "판";
@@ -88,12 +85,10 @@ namespace DeskAssembleData
                             model.CategoryName = "다리";
                         else if (model.CategoryId == 4)
                             model.CategoryName = "볼트 & 너트";
-                       
+
                         models.Add(model);
                     }
-
-                    return models;
-                    
+                    return models;            
                 }
                
             }
@@ -105,6 +100,8 @@ namespace DeskAssembleData
             {
                 using (var context = DbContextCreator.Create())
                 {
+                    var productNames = context.Items.ToDictionary(x => x.ItemId, x => x.Name);
+
                     var query = from p in context.Orders
                                 where p.IsSale == true
                                 select new
@@ -119,25 +116,14 @@ namespace DeskAssembleData
                                  group x by x.ItemId into g
                                  select g;
 
-                    List<Salemodel2> models = new List<Salemodel2>();
+                    var models = new List<Salemodel2>();
 
                     foreach (var @group in query2)
                     {
                         Salemodel2 model = new Salemodel2();
                         model.ItemId = group.Key;
                         model.Quantity = group.Sum(g => g.Quantity);
-
-                        if (model.ItemId == 1)
-                            model.ProductName = "책상1";
-                        else if (model.ItemId == 2)
-                            model.ProductName = "책상2";
-                        else if (model.ItemId == 3)
-                            model.ProductName = "책상3";
-                        else if (model.ItemId == 4)
-                            model.ProductName = "책상4";
-                        else if (model.ItemId == 20)
-                            model.ProductName = "책상5";
-                        
+                        model.ProductName = productNames[group.Key];
                         models.Add(model);
                     }
                     return models;
