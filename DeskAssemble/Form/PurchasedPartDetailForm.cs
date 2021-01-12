@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace DeskAssemble
 {
-    public partial class PurchasedPartDetailForm : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class PurchasedPartDetailForm : DevExpress.XtraEditors.XtraForm
     {
         public PurchasedPartDetailForm(PurchasedPartForm quantityForm, Purchasemodel2 pmodel)
         {
