@@ -2,7 +2,7 @@
 
 ## 개요
 
-가구공장의 부품과, 완제품의 정보와 입고, 출고, 주문 내역등을 조회할 수 있고 조회한 데이터를 이용한 차트를 Devexpress, C#.NET Framework 및 EntityFramework를 이용해 구현하였다.
+가구공장의 부품/완제품의 정보와 입고/출고, 주문 내역등을 조회할 수 있고 조회한 데이터를 이용한 차트를 Devexpress, C#.NET Framework 및 EntityFramework를 이용해 구현하였다.
 
 ## 개발기간
 
